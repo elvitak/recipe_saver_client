@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
 describe("Visitingg the application, a user", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3001");
+    cy.visit("/");
   });
 
   it("is expected to see a header", () => {
