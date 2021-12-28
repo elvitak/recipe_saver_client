@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("User can navigate the app", () => {
   beforeEach(() => {
     cy.visit("/");
