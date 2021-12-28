@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 describe("User can navigate the app", () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit("/");
   });
 
@@ -11,7 +11,10 @@ describe("User can navigate the app", () => {
     });
 
     it("is expected to display My recipes header", () => {
-      cy.get("#collectionOfRecipes").should("contain", "My saved recipes");
+      cy.get("[data-cy=collectionOfRecipes]").should(
+        "contain",
+        "My saved recipes"
+      );
     });
 
     it("is expected to display correct url", () => {
@@ -19,7 +22,7 @@ describe("User can navigate the app", () => {
     });
 
     it("is expected to not display Add Recipe header", () => {
-      cy.get("#addRecipeHeader").should("not.exist");
+      cy.get("[data-cy=addNewRecipe]").should("not.exist");
     });
   });
 
@@ -30,15 +33,18 @@ describe("User can navigate the app", () => {
     });
 
     it("is expected to display My recipes header", () => {
-      cy.get("#collectionOfRecipes").should("contain", "My saved recipes");
+      cy.get("[data-cy=addNewRecipe]").should(
+        "contain",
+        "Save your recipe here"
+      );
     });
 
     it("is expected to display correct url", () => {
-      cy.url().should("not.contain", "recipe_collection");
+      cy.url().should("contain", "add_recipe");
     });
 
     it("is expected to not display Add Recipe header", () => {
-      cy.get("#savedRecipesHeader").should("not.exist");
+      cy.get("[data-cy=collectionOfRecipes]").should("not.exist");
     });
   });
 });

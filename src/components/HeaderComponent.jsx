@@ -1,6 +1,6 @@
 import React from "react";
 import { Segment, Menu } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const HeaderComponent = () => {
   return (
@@ -9,8 +9,8 @@ const HeaderComponent = () => {
         <Menu.Item
           id="recipeCollectionTab"
           name="Your saved recipes"
-          as={NavLink}
-          to={{ pathname: "/recipe_collection" }}
+          as={Link}
+          to={{ pathname: "/" }}
         />
         <Menu.Item
           id="addNewRecipeTab"

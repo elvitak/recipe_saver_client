@@ -1,7 +1,8 @@
 import React from "react";
+import { Header } from "semantic-ui-react";
 
 const FormToSaveRecipe = () => {
-  return <h1>Save your recipe here</h1>;
+  return <Header data-cy="addNewRecipe">Save your recipe here</Header>;
 };
 
 export default FormToSaveRecipe;
