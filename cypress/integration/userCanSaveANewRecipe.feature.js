@@ -19,4 +19,11 @@ describe("Visitingg the application, a user", () => {
     );
     cy.get("[data-cy=form-add]").click();
   });
+
+  it("is expected to add new ingredient input line after ingridient has been added", () => {
+    cy.get("[data-cy=form-ingredient-amount]").type(10);
+    cy.get("[data-cy=form-ingredient-unit]").type("ml");
+    cy.get("[data-cy=form-ingredient-name]").type("piens");
+    cy.get("[data-cy=form-ingredient-input-line]").should("have.length", 2);
+  });
 });
