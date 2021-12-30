@@ -30,8 +30,9 @@ const FormToSaveRecipe = () => {
     <Form.Group data-cy="form-ingredient-input-line" widths="equal" key={index}>
       <Form.Input
         data-cy={"form-ingredient-amount-" + index}
-        label="Amount"
+        label={index === 0 ? "Amount" : undefined}
         placeholder="2"
+        width={3}
         value={ingredient.amount.value}
         onChange={(e) =>
           dispatch({
@@ -43,8 +44,9 @@ const FormToSaveRecipe = () => {
       />
       <Form.Input
         data-cy={"form-ingredient-unit-" + index}
-        label="Units"
+        label={index === 0 ? "Unit" : undefined}
         placeholder="Units"
+        width={3}
         value={ingredient.unit.value}
         onChange={(e) =>
           dispatch({
@@ -56,8 +58,9 @@ const FormToSaveRecipe = () => {
       />
       <Form.Input
         data-cy={"form-ingredient-name-" + index}
-        label="Ingredient"
+        label={index === 0 ? "Ingredient" : undefined}
         placeholder="Ingredient"
+        width={10}
         value={ingredient.name.value}
         onChange={(e) =>
           dispatch({
