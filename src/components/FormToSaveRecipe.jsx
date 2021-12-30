@@ -29,7 +29,7 @@ const FormToSaveRecipe = () => {
   const allIngredientsUI = state.ingredients.map((ingredient, index) => (
     <Form.Group data-cy="form-ingredient-input-line" widths="equal" key={index}>
       <Form.Input
-        data-cy="form-ingredient-amount"
+        data-cy={"form-ingredient-amount-" + index}
         label="Amount"
         placeholder="2"
         value={ingredient.amount.value}
@@ -42,7 +42,7 @@ const FormToSaveRecipe = () => {
         }
       />
       <Form.Input
-        data-cy="form-ingredient-unit"
+        data-cy={"form-ingredient-unit-" + index}
         label="Units"
         placeholder="Units"
         value={ingredient.unit.value}
@@ -55,7 +55,7 @@ const FormToSaveRecipe = () => {
         }
       />
       <Form.Input
-        data-cy="form-ingredient-name"
+        data-cy={"form-ingredient-name-" + index}
         label="Ingredient"
         placeholder="Ingredient"
         value={ingredient.name.value}
