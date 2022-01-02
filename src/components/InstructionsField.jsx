@@ -5,7 +5,7 @@ const InstructionsField = ({ value, onInstructionsChange }) => {
   return (
     <Form.TextArea
       data-cy="form-instructions"
-      label="instructions"
+      label="Instructions"
       placeholder="Take 2 egss and ..."
       value={value.join("\n\n")}
       onChange={(e) => onInstructionsChange(e.target.value.split("\n\n"))}

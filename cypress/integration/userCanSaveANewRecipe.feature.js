@@ -17,7 +17,7 @@ describe("Visitingg the application, a user", () => {
     cy.get("[data-cy=form-instructions]").type(
       "Vispirms sāk ar bezē kārtu gatavošanu - olu baltumus lej mikserbļodā, pievieno šķipsniņu sāls, tad sāk kulšanu, pēc kādas minūtes, kad olbaltumi kļuvuši gaisīgi, pa ēdamkarotei lēnām pievieno un iekuļ visu cukuru."
     );
-    cy.get("[data-cy=form-add]").click();
+    cy.get("[data-cy=form-create-btn]").click();
   });
 
   it("is expected to add new ingredient input line after ingridient has been added", () => {

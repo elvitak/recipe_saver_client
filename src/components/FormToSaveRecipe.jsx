@@ -3,6 +3,7 @@ import { Header, Form, Button } from "semantic-ui-react";
 import IngridientsInputFields from "./IngridientsInputFields";
 import InstructionsField from "./InstructionsField";
 import TitleInputField from "./TitleInputField";
+import Recipes from "../modules/recipes";
 
 const FormToSaveRecipe = () => {
   const initialState = {
@@ -12,6 +13,16 @@ const FormToSaveRecipe = () => {
   };
 
   const [recipe, setRecipe] = useState(initialState);
+
+  const createRecipe = async () => {
+    const response = await Recipes.create({
+      title: recipe.title,
+      ingredients: recipe.ingredients,
+      instructions: recipe.instructions,
+    });
+
+    return response;
+  };
 
   return (
     <>
@@ -42,7 +53,9 @@ const FormToSaveRecipe = () => {
           }
         />
       </Form>
-      <Button data-cy="form-add">Add Recipe</Button>
+      <Button data-cy="form-create-btn" onClick={createRecipe}>
+        Add Recipe
+      </Button>
     </>
   );
 };
