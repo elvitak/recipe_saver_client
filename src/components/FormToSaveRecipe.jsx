@@ -52,9 +52,7 @@ const FormToSaveRecipe = () => {
           }
         />
       </form>
-      <button data-cy="form-create-btn" onClick={createRecipe}>
-        Add Recipe
-      </button>
+      <button data-cy="form-create-btn">Add Recipe</button>
     </>
   );
 };

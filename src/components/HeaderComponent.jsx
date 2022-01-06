@@ -1,22 +1,41 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AppBar, Toolbar, CssBaseline, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  navlinks: {
+    marginLeft: theme.spacing(10),
+    display: "flex",
+  },
+  link: {
+    textDecoration: "none",
+    color: "white",
+    fontSize: "20px",
+    position: "left",
+    marginLeft: theme.spacing(10),
+    "&:hover": {
+      color: "black",
+    },
+  },
+}));
 
 const HeaderComponent = () => {
+  const classes = useStyles();
+
   return (
-    <nav>
-      <li
-        id="recipeCollectionTab"
-        name="Your saved recipes"
-        as={Link}
-        to={{ pathname: "/" }}
-      />
-      <li
-        id="addNewRecipeTab"
-        name="Add new recipe"
-        as={NavLink}
-        to={{ pathname: "/add_recipe" }}
-      />
-    </nav>
+    <AppBar position="static" style={{ background: "#616161" }}>
+      <CssBaseline />
+      <Toolbar>
+        <div className={classes.navlinks}>
+          <Link to="/" className={classes.link} id="recipeCollectionTab">
+            Saved recipes
+          </Link>
+          <Link to="/add_recipe" className={classes.link} id="addNewRecipeTab">
+            Add new recipe
+          </Link>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 

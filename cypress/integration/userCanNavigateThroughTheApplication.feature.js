@@ -13,7 +13,7 @@ describe("User can navigate the app", () => {
     it("is expected to display My recipes header", () => {
       cy.get("[data-cy=collectionOfRecipes]").should(
         "contain",
-        "My saved recipes"
+        "Saved recipes"
       );
     });
 
