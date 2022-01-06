@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Header, Form, Button } from "semantic-ui-react";
 import IngridientsInputFields from "./IngridientsInputFields";
 import InstructionsField from "./InstructionsField";
 import TitleInputField from "./TitleInputField";
@@ -26,8 +25,8 @@ const FormToSaveRecipe = () => {
 
   return (
     <>
-      <Header data-cy="addNewRecipe">Save your recipe here</Header>
-      <Form>
+      <h1 data-cy="addNewRecipe">Save your recipe here</h1>
+      <form>
         <TitleInputField
           value={recipe.title}
           onTitleChange={(value) =>
@@ -52,10 +51,10 @@ const FormToSaveRecipe = () => {
             })
           }
         />
-      </Form>
-      <Button data-cy="form-create-btn" onClick={createRecipe}>
+      </form>
+      <button data-cy="form-create-btn" onClick={createRecipe}>
         Add Recipe
-      </Button>
+      </button>
     </>
   );
 };

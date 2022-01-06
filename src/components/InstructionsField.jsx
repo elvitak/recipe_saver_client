@@ -1,9 +1,8 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
 
 const InstructionsField = ({ value, onInstructionsChange }) => {
   return (
-    <Form.TextArea
+    <textarea
       data-cy="form-instructions"
       label="Instructions"
       placeholder="Take 2 egss and ..."

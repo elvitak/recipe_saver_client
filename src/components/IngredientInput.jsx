@@ -1,10 +1,9 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
 
 const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
   return (
-    <Form.Group data-cy="form-ingredient-input-line" widths="equal">
-      <Form.Input
+    <form data-cy="form-ingredient-input-line" widths="equal">
+      <input
         data-cy={"form-ingredient-amount-" + id}
         label={id === 0 ? "Amount" : undefined}
         placeholder="2"
@@ -14,7 +13,7 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
           onIngredientChange({ ...ingredient, ...{ amount: e.target.value } })
         }
       />
-      <Form.Input
+      <input
         data-cy={"form-ingredient-unit-" + id}
         label={id === 0 ? "Unit" : undefined}
         placeholder="Units"
@@ -24,7 +23,7 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
           onIngredientChange({ ...ingredient, ...{ unit: e.target.value } })
         }
       />
-      <Form.Input
+      <input
         data-cy={"form-ingredient-name-" + id}
         label={id === 0 ? "Ingredient" : undefined}
         placeholder="Ingredient"
@@ -34,7 +33,7 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
           onIngredientChange({ ...ingredient, ...{ name: e.target.value } })
         }
       />
-    </Form.Group>
+    </form>
   );
 };
 

@@ -1,8 +1,7 @@
 import React from "react";
-import { Header } from "semantic-ui-react";
 
 const DisplayRecipeCollection = () => {
-  return <Header data-cy="collectionOfRecipes">My saved recipes</Header>;
+  return <h1 data-cy="collectionOfRecipes">My saved recipes</h1>;
 };
 
 export default DisplayRecipeCollection;

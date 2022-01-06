@@ -1,9 +1,8 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
 
 const TitleInputField = ({ value, onTitleChange }) => {
   return (
-    <Form.Field>
+    <form>
       <label>Title</label>
       <input
         data-cy="form-title"
@@ -11,7 +10,7 @@ const TitleInputField = ({ value, onTitleChange }) => {
         value={value}
         onChange={(e) => onTitleChange(e.target.value)}
       />
-    </Form.Field>
+    </form>
   );
 };
 
