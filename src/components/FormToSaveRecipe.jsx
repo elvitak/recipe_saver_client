@@ -14,12 +14,7 @@ const FormToSaveRecipe = () => {
   const [recipe, setRecipe] = useState(initialState);
 
   const createRecipe = async () => {
-    const response = await Recipes.create({
-      title: recipe.title,
-      ingredients: recipe.ingredients,
-      instructions: recipe.instructions,
-    });
-
+    const response = await Recipes.create(recipe);
     return response;
   };
 
@@ -52,7 +47,9 @@ const FormToSaveRecipe = () => {
           }
         />
       </form>
-      <button data-cy="form-create-btn">Add Recipe</button>
+      <button data-cy="form-create-btn" onClick={createRecipe}>
+        Add Recipe
+      </button>
     </>
   );
 };

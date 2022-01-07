@@ -1,16 +1,18 @@
 import axios from "axios";
 
 const Recipes = {
-  baseURL: "http://localhost:3000/api",
+  baseURL: "http://localhost:4000/api",
 
-  async create({ title, ingredients, instructions }) {
-    debugger;
+  async create(recipe) {
+    const ingredientsWithoutEmptyRow = recipe.ingredients.slice(0, -1);
+
+    const recipeRequest = {
+      title: recipe.title,
+      ingredients_attributes: ingredientsWithoutEmptyRow,
+      instructions_attributes: recipe.instructions,
+    };
     const { response } = await axios.post(`${this.baseURL}/recipes`, {
-      params: {
-        title: title,
-        ingredients: ingredients,
-        instructions: instructions,
-      },
+      recipe: recipeRequest,
     });
     return response;
   },
