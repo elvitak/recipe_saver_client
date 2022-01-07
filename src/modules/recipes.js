@@ -16,6 +16,11 @@ const Recipes = {
     });
     return response;
   },
+
+  async index() {
+    const { data } = await axios.get(`${this.baseURL}/recipes`);
+    return data;
+  },
 };
 
 export default Recipes;
