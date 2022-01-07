@@ -1,14 +1,14 @@
 describe("User", () => {
   before(() => {
-    cy.intercept("GET", "**/api/recipes", { fixture: "index_response.json" });
+    cy.intercept("GET", "**/api/recipes", {
+      fixture: "index_response.json",
+    }).as("getRecipes");
     cy.visit("/");
     cy.get("#recipeCollectionTab").click();
-    cy.get("[data-cy=recipe-collection]")
-      .children()
-      .first()
-      .within(() => {
-        cy.get("button").click();
-      });
+  });
+
+  it("is expected to make a network call with status 200", () => {
+    cy.wait("@getRecipes").its("response.statusCode").should("eq", 200);
   });
 
   it("is expected to see 3 saved recipes", () => {
