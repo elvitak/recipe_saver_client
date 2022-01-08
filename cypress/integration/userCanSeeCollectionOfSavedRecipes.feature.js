@@ -12,7 +12,7 @@ describe("User", () => {
   });
 
   it("is expected to see 3 saved recipes", () => {
-    cy.get("[data-cy=recipe-collection]").should("have.length", 3);
+    cy.get("[data-cy=recipe-collection]").children().should("have.length", 3);
   });
 
   it("is expected to see the right title", () => {

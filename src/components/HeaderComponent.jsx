@@ -20,11 +20,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ onRecipeCollectionChange }) => {
   const classes = useStyles();
 
   const getRecipes = async () => {
-    const response = await Recipes.index();
+    const data = await Recipes.index();
+    onRecipeCollectionChange(data.recipes);
   };
 
   return (
