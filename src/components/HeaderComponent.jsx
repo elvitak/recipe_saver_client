@@ -1,24 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, CssBaseline, makeStyles } from "@material-ui/core";
+import { AppBar, Toolbar, CssBaseline } from "@material-ui/core";
 import Recipes from "../modules/recipes";
-
-const useStyles = makeStyles((theme) => ({
-  navlinks: {
-    marginLeft: theme.spacing(10),
-    display: "flex",
-  },
-  link: {
-    textDecoration: "none",
-    color: "white",
-    fontSize: "20px",
-    position: "left",
-    marginLeft: theme.spacing(10),
-    "&:hover": {
-      color: "black",
-    },
-  },
-}));
+import useStyles from "../styles/styles";
 
 const HeaderComponent = ({ onRecipeCollectionChange }) => {
   const classes = useStyles();
