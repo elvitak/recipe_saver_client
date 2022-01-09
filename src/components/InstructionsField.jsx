@@ -1,14 +1,19 @@
 import React from "react";
+import { TextField } from "@material-ui/core";
 
 const InstructionsField = ({ value, onInstructionsChange }) => {
   return (
-    <textarea
-      data-cy="form-instructions"
-      label="Instructions"
-      placeholder="Take 2 egss and ..."
-      value={value.join("\n\n")}
-      onChange={(e) => onInstructionsChange(e.target.value.split("\n\n"))}
-    />
+    <div>
+      <TextField
+        data-cy="form-instructions"
+        label="Instructions"
+        multiline
+        rows={4}
+        variant="standard"
+        value={value.join("\n\n")}
+        onChange={(e) => onInstructionsChange(e.target.value.split("\n\n"))}
+      />
+    </div>
   );
 };
 

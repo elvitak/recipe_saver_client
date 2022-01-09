@@ -1,16 +1,17 @@
 import React from "react";
+import { TextField } from "@material-ui/core";
 
 const TitleInputField = ({ value, onTitleChange }) => {
   return (
-    <form>
-      <label>Title</label>
-      <input
+    <div>
+      <TextField
         data-cy="form-title"
-        placeholder="Recipe title"
+        label="Title"
+        variant="standard"
         value={value}
         onChange={(e) => onTitleChange(e.target.value)}
       />
-    </form>
+    </div>
   );
 };
 

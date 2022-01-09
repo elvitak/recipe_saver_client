@@ -3,8 +3,11 @@ import IngridientsInputFields from "./IngridientsInputFields";
 import InstructionsField from "./InstructionsField";
 import TitleInputField from "./TitleInputField";
 import Recipes from "../modules/recipes";
+import { Container, Button, Typography } from "@material-ui/core";
+import useStyles from "../styles/styles";
 
 const FormToSaveRecipe = () => {
+  const classes = useStyles();
   const initialState = {
     title: "",
     instructions: [],
@@ -20,8 +23,19 @@ const FormToSaveRecipe = () => {
 
   return (
     <>
-      <h1 data-cy="addNewRecipe">Save your recipe here</h1>
-      <form>
+      <div className={classes.container}>
+        <Typography
+          data-cy="addNewRecipe"
+          variant="h2"
+          align="left"
+          color="textPrimary"
+          gutterBottom
+        >
+          Save your recipe here
+        </Typography>
+      </div>
+
+      <Container disableGutters>
         <TitleInputField
           value={recipe.title}
           onTitleChange={(value) =>
@@ -46,10 +60,14 @@ const FormToSaveRecipe = () => {
             })
           }
         />
-      </form>
-      <button data-cy="form-create-btn" onClick={createRecipe}>
-        Add Recipe
-      </button>
+        <Button
+          data-cy="form-create-btn"
+          variant="contained"
+          onClick={createRecipe}
+        >
+          Add Recipe
+        </Button>
+      </Container>
     </>
   );
 };
