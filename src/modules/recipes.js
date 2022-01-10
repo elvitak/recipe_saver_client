@@ -21,6 +21,11 @@ const Recipes = {
     const { data } = await axios.get(`${this.baseURL}/recipes`);
     return data;
   },
+
+  async show(id) {
+    const { data } = await axios.get(`${this.baseURL}/recipes/${id}`);
+    return data;
+  },
 };
 
 export default Recipes;

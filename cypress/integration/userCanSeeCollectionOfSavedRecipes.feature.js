@@ -32,7 +32,7 @@ describe("User", () => {
       .children()
       .first()
       .within(() => {
-        cy.get("button").click();
+        cy.get("[data-cy=view-btn]").click();
       });
   });
 });
