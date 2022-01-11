@@ -3,6 +3,9 @@ describe("User", () => {
     cy.intercept("GET", "**/api/recipes", {
       fixture: "index_response.json",
     }).as("getRecipes");
+    cy.intercept("GET", "**/api/recipes/**", {
+      fixture: "show_response.json",
+    });
     cy.visit("/");
     cy.get("#recipeCollectionTab").click();
   });
@@ -34,5 +37,12 @@ describe("User", () => {
       .within(() => {
         cy.get("[data-cy=view-btn]").click();
       });
+  });
+
+  it("is expected to see specific recipe when pressed on view button", () => {
+    cy.get("[data-cy=single-recipe-title]").should(
+      "contain",
+      "Good Old Fashioned Pancakes"
+    );
   });
 });

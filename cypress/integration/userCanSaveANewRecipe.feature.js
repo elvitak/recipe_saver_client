@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
-describe("Visitingg the application, a user", () => {
+describe("Visiting the application, a user", () => {
   beforeEach(() => {
+    cy.intercept("POST", "**/api/recipes", {
+      fixture: "create_response.json",
+    });
     cy.visit("/");
     cy.get("#addNewRecipeTab").click();
   });

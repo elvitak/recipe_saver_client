@@ -1,9 +1,9 @@
 import React from "react";
 
-const DisplaySingleRecipe = ({ data }) => {
+const DisplaySingleRecipe = ({ singleRecipeData }) => {
   console.log("==========");
-  console.log(data);
-  return <div>It works</div>;
+  console.log(singleRecipeData);
+  return <div>{singleRecipeData.title}</div>;
 };
 
 export default DisplaySingleRecipe;

@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 describe("User can navigate the app", () => {
   before(() => {
+    cy.intercept("GET", "**/api/recipes", {
+      fixture: "index_response.json",
+    });
     cy.visit("/");
   });
 
@@ -28,7 +31,6 @@ describe("User can navigate the app", () => {
 
   describe("to Add Recipe tab and it", () => {
     before(() => {
-      cy.get("#recipeCollectionTab").click();
       cy.get("#addNewRecipeTab").click();
     });
 

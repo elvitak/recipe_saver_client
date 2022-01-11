@@ -13,19 +13,21 @@ import Recipes from "../modules/recipes";
 import DisplaySingleRecipe from "./DisplaySingleRecipe";
 
 const DisplayRecipeCollection = ({ recipeCollection }) => {
-  const [showSingleRecipe, setShowSingleRecipe] = useState(false);
+  const [singleRecipeData, setSingleRecipeData] = useState();
 
   const showRecipe = async (id) => {
     const data = await Recipes.show(id);
+    console.table(data);
+    setSingleRecipeData(data);
   };
 
-  const displaySingleRecipe = () => setShowSingleRecipe(true);
+  // const displaySingleRecipe = () => setShowSingleRecipe(true);
 
   const classes = useStyles();
   return (
     <>
-      {showSingleRecipe ? (
-        <DisplaySingleRecipe />
+      {singleRecipeData ? (
+        <DisplaySingleRecipe singleRecipeData={singleRecipeData} />
       ) : (
         <main>
           <div className={classes.container}>
@@ -65,7 +67,6 @@ const DisplayRecipeCollection = ({ recipeCollection }) => {
                         size="small"
                         color="primary"
                         data-cy="view-btn"
-                        onClick={displaySingleRecipe}
                         onClick={() => showRecipe(recipe.id)}
                       >
                         View
