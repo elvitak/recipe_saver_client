@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Typography,
   Container,
@@ -11,77 +11,71 @@ import {
 import useStyles from "../styles/styles";
 import Recipes from "../modules/recipes";
 import DisplaySingleRecipe from "./DisplaySingleRecipe";
+import { Link } from "react-router-dom";
 
-const DisplayRecipeCollection = ({ recipeCollection }) => {
-  const [singleRecipeData, setSingleRecipeData] = useState();
+const DisplayRecipeCollection = () => {
+  const [recipes, setRecipes] = useState([]);
 
-  const showRecipe = async (id) => {
-    const data = await Recipes.show(id);
-    console.table(data);
-    setSingleRecipeData(data);
-  };
-
-  // const displaySingleRecipe = () => setShowSingleRecipe(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await Recipes.index();
+      setRecipes(data.recipes);
+    };
+    fetchData();
+  }, []);
 
   const classes = useStyles();
   return (
     <>
-      {singleRecipeData ? (
-        <DisplaySingleRecipe singleRecipeData={singleRecipeData} />
-      ) : (
-        <main>
-          <div className={classes.container}>
-            <Typography
-              variant="h2"
-              align="left"
-              color="textPrimary"
-              gutterBottom
-              data-cy="collectionOfRecipes"
-            >
-              Saved recipes
-            </Typography>
-          </div>
-          <Container className={classes.cardGrid} disableGutters={true}>
-            <Grid container spacing={4}>
-              {recipeCollection.map((recipe) => (
-                <Grid
-                  item
-                  key={recipe.id}
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  data-cy="recipe-collection"
-                >
-                  <Card className={classes.card}>
-                    <CardContent className={classes.cardContent}>
-                      <Typography
-                        gutterBottom
-                        variant="h5"
-                        data-cy="recipe-collection-title"
-                      >
-                        {recipe.title}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        size="small"
-                        color="primary"
-                        data-cy="view-btn"
-                        onClick={() => showRecipe(recipe.id)}
-                      >
+      <main>
+        <div className={classes.container}>
+          <Typography
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+            data-cy="collectionOfRecipes"
+          >
+            Saved recipes
+          </Typography>
+        </div>
+        <Container className={classes.cardGrid} disableGutters={true}>
+          <Grid container spacing={4}>
+            {recipes.map((recipe) => (
+              <Grid
+                item
+                key={recipe.id}
+                xs={12}
+                sm={6}
+                md={4}
+                data-cy="recipe-collection"
+              >
+                <Card className={classes.card}>
+                  <CardContent className={classes.cardContent}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      data-cy="recipe-collection-title"
+                    >
+                      {recipe.title}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Link to={"/recipes/" + recipe.id}>
+                      <Button size="small" color="primary" data-cy="view-btn">
                         View
                       </Button>
-                      <Button size="small" color="primary">
-                        Edit
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </main>
-      )}
+                    </Link>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </main>
     </>
   );
 };

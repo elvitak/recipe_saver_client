@@ -27,7 +27,7 @@ const FormToSaveRecipe = () => {
         <Typography
           data-cy="addNewRecipe"
           variant="h2"
-          align="left"
+          align="center"
           color="textPrimary"
           gutterBottom
         >

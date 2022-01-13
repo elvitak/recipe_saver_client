@@ -1,23 +1,18 @@
 import React, { useState } from "react";
+import HeaderComponent from "./components/HeaderComponent";
 import { Routes, Route } from "react-router";
 import FormToSaveRecipe from "./components/FormToSaveRecipe";
-import HeaderComponent from "./components/HeaderComponent";
 import DisplayRecipeCollection from "./components/DisplayRecipeCollection";
+import DisplaySingleRecipe from "./components/DisplaySingleRecipe";
 
 const App = () => {
-  const [recipeCollection, setRecipeCollection] = useState([]);
-
   return (
     <>
-      <HeaderComponent onRecipeCollectionChange={setRecipeCollection} />
+      <HeaderComponent />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <DisplayRecipeCollection recipeCollection={recipeCollection} />
-          }
-        />
-        <Route path="/add_recipe" element={<FormToSaveRecipe />} />
+        <Route path="add-recipe" element={<FormToSaveRecipe />} />
+        <Route path="recipes" element={<DisplayRecipeCollection />} />
+        <Route path="recipes/:id" element={<DisplaySingleRecipe />} />
       </Routes>
     </>
   );
