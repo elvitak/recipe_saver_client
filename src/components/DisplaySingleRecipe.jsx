@@ -16,7 +16,27 @@ const DisplaySingleRecipe = () => {
   if (recipe === undefined) {
     return <CircularProgress />;
   } else {
-    return <div>{recipe.title}</div>;
+    const instructions = recipe.instructions.map((instruction) => (
+      <li>{instruction.instruction}</li>
+    ));
+
+    const ingredients = recipe.ingredients.map((ingredient) => (
+      <li>
+        {ingredient.amount} {ingredient.unit} {ingredient.name}
+      </li>
+    ));
+
+    return (
+      <>
+        <div data-cy="recipe-title">{recipe.title}</div>
+        <div data-cy="recipe-instructions">
+          <ol>{instructions}</ol>
+        </div>
+        <div data-cy="recipe-ingredients">
+          <ul>{ingredients}</ul>
+        </div>
+      </>
+    );
   }
 };
 

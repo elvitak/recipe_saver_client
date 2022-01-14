@@ -40,32 +40,29 @@ const DisplayRecipeCollection = () => {
           </Typography>
         </div>
         <Container className={classes.cardGrid} disableGutters={true}>
-          <Grid container spacing={4}>
+          <Grid data-cy="recipe-collection" container spacing={4}>
             {recipes.map((recipe) => (
-              <Grid
-                item
-                key={recipe.id}
-                xs={12}
-                sm={6}
-                md={4}
-                data-cy="recipe-collection"
-              >
+              <Grid item key={recipe.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardContent className={classes.cardContent}>
                     <Typography
                       gutterBottom
                       variant="h5"
-                      data-cy="recipe-collection-title"
+                      data-cy="recipe-title"
                     >
                       {recipe.title}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Link to={"/recipes/" + recipe.id} data-cy="view-btn">
-                      <Button size="small" color="primary">
-                        View
-                      </Button>
-                    </Link>
+                    <Button
+                      to={"/recipes/" + recipe.id}
+                      data-cy="view-btn"
+                      size="small"
+                      color="primary"
+                      component={Link}
+                    >
+                      View
+                    </Button>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
