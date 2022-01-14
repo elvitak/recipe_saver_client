@@ -42,7 +42,7 @@ describe("User can navigate the app", () => {
     });
 
     it("is expected to display correct url", () => {
-      cy.url().should("contain", "add_recipe");
+      cy.url().should("contain", "add-recipe");
     });
 
     it("is expected to not display Add Recipe header", () => {

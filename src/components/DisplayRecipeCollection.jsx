@@ -10,18 +10,18 @@ import {
 } from "@material-ui/core";
 import useStyles from "../styles/styles";
 import Recipes from "../modules/recipes";
-import DisplaySingleRecipe from "./DisplaySingleRecipe";
 import { Link } from "react-router-dom";
 
 const DisplayRecipeCollection = () => {
   const [recipes, setRecipes] = useState([]);
 
+  const fetchRecipes = async () => {
+    const data = await Recipes.index();
+    setRecipes(data.recipes);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await Recipes.index();
-      setRecipes(data.recipes);
-    };
-    fetchData();
+    fetchRecipes();
   }, []);
 
   const classes = useStyles();
@@ -61,8 +61,8 @@ const DisplayRecipeCollection = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Link to={"/recipes/" + recipe.id}>
-                      <Button size="small" color="primary" data-cy="view-btn">
+                    <Link to={"/recipes/" + recipe.id} data-cy="view-btn">
+                      <Button size="small" color="primary">
                         View
                       </Button>
                     </Link>

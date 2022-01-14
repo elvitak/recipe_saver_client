@@ -22,7 +22,7 @@
     "start:dev": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "cy:open": "cypress open",
+    "cy:open": "NODE_OPTIONS=--openssl-legacy-provider cypress open",
     "cypress": "start-server-and-test start:dev http://localhost:3000 cy:open"
   },
   "eslintConfig": {
@@ -44,7 +44,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^9.2.0",
+    "cypress": "^9.2.1",
     "start-server-and-test": "^1.14.0"
   }
 }
