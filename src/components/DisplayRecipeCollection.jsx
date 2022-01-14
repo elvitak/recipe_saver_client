@@ -7,7 +7,7 @@ import {
   Button,
   Grid,
   Card,
-} from "@material-ui/core";
+} from "@mui/material";
 import useStyles from "../styles/styles";
 import Recipes from "../modules/recipes";
 import { Link } from "react-router-dom";

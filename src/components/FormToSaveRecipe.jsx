@@ -3,7 +3,7 @@ import IngridientsInputFields from "./IngridientsInputFields";
 import InstructionsField from "./InstructionsField";
 import TitleInputField from "./TitleInputField";
 import Recipes from "../modules/recipes";
-import { Container, Button, Typography } from "@material-ui/core";
+import { Container, Button, Typography } from "@mui/material";
 import useStyles from "../styles/styles";
 
 const FormToSaveRecipe = () => {

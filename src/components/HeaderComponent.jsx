@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, CssBaseline } from "@material-ui/core";
+import { AppBar, Toolbar, CssBaseline } from "@mui/material";
 import useStyles from "../styles/styles";
 
 const HeaderComponent = () => {

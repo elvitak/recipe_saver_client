@@ -11,7 +11,7 @@ const DisplaySingleRecipe = () => {
     Recipes.show(id)
       .then((data) => data.recipe)
       .then(setRecipe);
-  }, []);
+  }, [id]);
 
   if (recipe === undefined) {
     return <CircularProgress />;
