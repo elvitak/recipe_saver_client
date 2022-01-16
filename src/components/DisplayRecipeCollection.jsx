@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
-  Typography,
-  Container,
-  CardContent,
-  CardActions,
-  Button,
-  Grid,
-  Card,
-} from "@mui/material";
-import useStyles from "../styles/styles";
+import { Typography, Container, Grid } from "@mui/material";
 import Recipes from "../modules/recipes";
-import { Link } from "react-router-dom";
+import useStyles from "../styles/styles";
+import RecipeCard from "./RecipeCard";
 
 const DisplayRecipeCollection = () => {
   const [recipes, setRecipes] = useState([]);
+  const classes = useStyles();
 
   const fetchRecipes = async () => {
     const data = await Recipes.index();
@@ -24,7 +17,14 @@ const DisplayRecipeCollection = () => {
     fetchRecipes();
   }, []);
 
-  const classes = useStyles();
+  const recipeCollection = recipes.map((recipe) => {
+    return (
+      <Grid item key={recipe.id} xs={12} sm={6} md={4}>
+        <RecipeCard recipe={recipe} />
+      </Grid>
+    );
+  });
+
   return (
     <>
       <main>
@@ -34,42 +34,14 @@ const DisplayRecipeCollection = () => {
             align="center"
             color="textPrimary"
             gutterBottom
-            data-cy="collectionOfRecipes"
+            data-cy="collection-header"
           >
             Saved recipes
           </Typography>
         </div>
         <Container className={classes.cardGrid} disableGutters={true}>
           <Grid data-cy="recipe-collection" container spacing={4}>
-            {recipes.map((recipe) => (
-              <Grid item key={recipe.id} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardContent className={classes.cardContent}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      data-cy="recipe-title"
-                    >
-                      {recipe.title}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      to={"/recipes/" + recipe.id}
-                      data-cy="view-btn"
-                      size="small"
-                      color="primary"
-                      component={Link}
-                    >
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+            {recipeCollection}
           </Grid>
         </Container>
       </main>
