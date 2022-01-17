@@ -12,16 +12,16 @@
       },
       {
         "amount": 1,
-        "unit": null,
+        "unit": "piece",
         "name": "egg"
       },
       {
-        "amount": 0,
+        "amount": 1,
         "unit": "tablespoon",
         "name": "nutmeg"
       },
       {
-        "amount": 0,
+        "amount": 1,
         "unit": "teaspoon",
         "name": "baking powder"
       }
@@ -34,5 +34,6 @@
         "instruction": "Heat a lightly oiled griddle or frying pan over medium-high heat. Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake. Brown on both sides and serve hot."
       }
     ]
-  }
+  },
+  "message": "Recipe was saved"
 }
