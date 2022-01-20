@@ -11,7 +11,7 @@ const Recipes = {
       ingredients_attributes: ingredientsWithoutEmptyRow,
       instructions_attributes: recipe.instructions,
     };
-    const { response } = await axios.post(`${this.baseURL}/recipes`, {
+    const response = await axios.post(`${this.baseURL}/recipes`, {
       recipe: recipeRequest,
     });
     return response;

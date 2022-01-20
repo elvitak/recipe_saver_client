@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-describe("User", () => {
+describe("Visiting the application, user", () => {
   before(() => {
     cy.intercept("GET", "/api/recipes", {
       fixture: "index_response.json",
@@ -34,13 +34,12 @@ describe("User", () => {
       });
   });
 
-  it("is expected to have right url", () => {
+  it("is expected to have access to the right url", () => {
     cy.get("[data-cy=recipe-collection]")
       .children()
       .first()
       .within(() => {
         cy.get("[data-cy=view-btn][href=\\/recipes\\/1]").should("be.visible");
       });
-    // cy.url().should("include", "/recipes/1");
   });
 });

@@ -1,16 +1,16 @@
 import React from "react";
 import { TextField } from "@mui/material";
 
-const InstructionsField = ({ value, onInstructionsChange }) => {
+const InstructionsField = ({ instructions, onInstructionsChange }) => {
   return (
     <div>
       <TextField
         data-cy="form-instructions"
         label="Instructions"
         multiline
-        rows={4}
+        fullWidth
         variant="standard"
-        value={value.join("\n\n")}
+        value={instructions.join("\n\n")}
         onChange={(e) => onInstructionsChange(e.target.value.split("\n\n"))}
       />
     </div>

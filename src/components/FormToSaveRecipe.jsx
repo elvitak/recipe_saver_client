@@ -25,7 +25,7 @@ const FormToSaveRecipe = () => {
     <>
       <div className={classes.container}>
         <Typography
-          data-cy="addNewRecipe"
+          data-cy="add-new-recipe"
           variant="h2"
           align="center"
           color="textPrimary"
@@ -37,7 +37,7 @@ const FormToSaveRecipe = () => {
 
       <Container disableGutters>
         <TitleInputField
-          value={recipe.title}
+          title={recipe.title}
           onTitleChange={(value) =>
             setRecipe((previousRecipe) => {
               return { ...previousRecipe, ...{ title: value } };
@@ -53,7 +53,7 @@ const FormToSaveRecipe = () => {
           }
         />
         <InstructionsField
-          value={recipe.instructions}
+          instructions={recipe.instructions}
           onInstructionsChange={(value) =>
             setRecipe((previousRecipe) => {
               return { ...previousRecipe, ...{ instructions: value } };

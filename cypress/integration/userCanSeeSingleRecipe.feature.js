@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-describe("User", () => {
+describe("Visiting the application, user", () => {
   before(() => {
     cy.intercept("GET", "/api/recipes", {
       fixture: "index_response.json",
@@ -21,8 +21,8 @@ describe("User", () => {
     cy.wait("@getRecipe").its("response.statusCode").should("eq", 200);
   });
 
-  it("is expected to display correct url", () => {
-    cy.url().should("contain", "1");
+  it("is expected to see correct url", () => {
+    cy.url().should("contain", "recipes/1");
   });
 
   it("is expected to see the right title", () => {
@@ -36,7 +36,7 @@ describe("User", () => {
     cy.get("[data-cy=recipe-ingredients]").should("contain", "100 grams sugar");
   });
 
-  it("is expected to see the right ingredients", () => {
+  it("is expected to see the right instructions", () => {
     cy.get("[data-cy=recipe-instructions]").should(
       "contain",
       "In a large bowl, sift together the flour, baking powder, salt and sugar. Make a well in the center and pour in the milk, egg and melted butter; mix until smooth."
