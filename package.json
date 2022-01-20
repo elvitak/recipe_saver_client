@@ -21,7 +21,7 @@
     "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "start:silent": "PORT=3002 BROWSER=none react-app-rewired start",
+    "start:silent": "PORT=3000 BROWSER=none react-app-rewired start",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cypress": "start-server-and-test start:silent http://localhost:3000/ cy:open",
