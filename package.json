@@ -18,12 +18,14 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start:dev": "BROWSER=none react-scripts start",
+    "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "start:silent": "PORT=3002 BROWSER=none react-app-rewired start",
     "cy:open": "cypress open",
-    "cypress": "start-server-and-test start:dev http://localhost:3000 cy:open"
+    "cy:run": "cypress run",
+    "cypress": "start-server-and-test start:silent http://localhost:3000/ cy:open",
+    "cypress:ci": "start-server-and-test start:silent http://localhost:3000/ cy:run"
   },
   "eslintConfig": {
     "extends": [
