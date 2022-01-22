@@ -46,7 +46,11 @@
     ]
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.12",
+    "babel-plugin-istanbul": "^6.1.1",
+    "customize-cra": "^1.0.0",
     "cypress": "^9.2.1",
+    "react-app-rewired": "^2.1.11",
     "start-server-and-test": "^1.14.0"
   }
 }
