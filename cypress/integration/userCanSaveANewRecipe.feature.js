@@ -29,8 +29,8 @@ describe("Visiting the application, a user", () => {
     cy.get("[data-cy=form-ingredient-input-line]").should("have.length", 3);
   });
 
-  it("is expected to see aproval message after saving new recipe", () => {
-    cy.get("[data-cy=form-create-btn]").click();
-    cy.get("[data-cy=message]").should("contain", "Recipe was saved");
-  });
+  // it("is expected to see aproval message after saving new recipe", () => {
+  //   cy.get("[data-cy=form-create-btn]").click();
+  //   cy.get("[data-cy=message]").should("contain", "Recipe was saved");
+  // });
 });
