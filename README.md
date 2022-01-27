@@ -3,6 +3,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/1ec33ca73af5746114da/maintainability)](https://codeclimate.com/github/elvitak/recipe_saver_client/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1ec33ca73af5746114da/test_coverage)](https://codeclimate.com/github/elvitak/recipe_saver_client/test_coverage)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/76aa6a02-8638-4721-a39f-ec3a55f51d35/deploy-status)](https://app.netlify.com/sites/recipe-saver/deploys)
+
 ### Desciption
 
 Passion project to practice coding.  
