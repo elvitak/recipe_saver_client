@@ -7,12 +7,11 @@ const DisplaySingleRecipe = () => {
   const [recipe, setRecipe] = useState();
   const { id } = useParams();
 
-  const fetchRecipe = async () => {
-    const data = await Recipes.show(id);
-    setRecipe(data.recipe);
-  };
-
   useEffect(() => {
+    const fetchRecipe = async () => {
+      const data = await Recipes.show(id);
+      setRecipe(data.recipe);
+    };
     fetchRecipe();
   }, [id]);
 
