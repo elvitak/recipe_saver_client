@@ -32,6 +32,11 @@ const Recipes = {
     const { data } = await axios.get(`${apiURL}/recipes/${id}`);
     return data;
   },
+
+  async delete(id) {
+    const response = await axios.delete(`${apiURL}/recipes/${id}`);
+    return response;
+  },
 };
 
 export default Recipes;

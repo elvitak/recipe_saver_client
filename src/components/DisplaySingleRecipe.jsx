@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Recipes from "../modules/recipes";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const DisplaySingleRecipe = () => {
   const [recipe, setRecipe] = useState();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,28 +18,22 @@ const DisplaySingleRecipe = () => {
     fetchRecipe();
   }, [id]);
 
+  const handleDelete = async () => {
+    const response = await Recipes.delete(id);
+    const message = response.data.message;
+
+    navigate("/recipes", { state: { message: message } });
+  };
+
   if (recipe === undefined) {
     return <CircularProgress />;
   } else {
-    const instructions = recipe.instructions.map((instruction) => (
-      <li>{instruction.instruction}</li>
-    ));
-
-    const ingredients = recipe.ingredients.map((ingredient) => (
-      <li>
-        {ingredient.amount} {ingredient.unit} {ingredient.name}
-      </li>
-    ));
-
     return (
       <>
+        <Button onClick={handleDelete} data-cy="delete-btn">
+          Delete this recipe
+        </Button>
         <div data-cy="recipe-title">{recipe.title}</div>
-        <div data-cy="recipe-instructions">
-          <ol>{instructions}</ol>
-        </div>
-        <div data-cy="recipe-ingredients">
-          <ul>{ingredients}</ul>
-        </div>
       </>
     );
   }
