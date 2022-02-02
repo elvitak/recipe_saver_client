@@ -3,10 +3,12 @@ import { Typography, Container, Grid } from "@mui/material";
 import Recipes from "../modules/recipes";
 import useStyles from "../styles/styles";
 import RecipeCard from "./RecipeCard";
+import { useLocation } from "react-router-dom";
 
 const DisplayRecipeCollection = () => {
   const [recipes, setRecipes] = useState([]);
   const classes = useStyles();
+  const { state } = useLocation();
 
   const fetchRecipes = async () => {
     const data = await Recipes.index();
@@ -39,6 +41,7 @@ const DisplayRecipeCollection = () => {
             Saved recipes
           </Typography>
         </div>
+        <div data-cy="flash-message">{state?.message}</div>
         <Container className={classes.cardGrid} disableGutters={true}>
           <Grid data-cy="recipe-collection" container spacing={4}>
             {recipeCollection}
