@@ -32,16 +32,16 @@ describe("Visiting the application, user", () => {
         "Good Old Fashioned Pancakes"
       );
     });
-    // it("is expected to see the right ingredients", () => {
-    //   cy.get("[data-cy=recipe-ingredients]").should("contain", "100 grams sugar");
-    // });
+    it("is expected to see the right ingredients", () => {
+      cy.get("[data-cy=ingredient-table]").contains("td", "sugar");
+    });
 
-    // it("is expected to see the right instructions", () => {
-    //   cy.get("[data-cy=recipe-instructions]").should(
-    //     "contain",
-    //     "In a large bowl, sift together the flour, baking powder, salt and sugar. Make a well in the center and pour in the milk, egg and melted butter; mix until smooth."
-    //   );
-    // });
+    it("is expected to see the right instructions", () => {
+      cy.get("[data-cy=recipe-instructions]").should(
+        "contain",
+        "In a large bowl, sift together the flour, baking powder, salt and sugar. Make a well in the center and pour in the milk, egg and melted butter; mix until smooth."
+      );
+    });
   });
 
   describe("who wants to delete a recipe", () => {
