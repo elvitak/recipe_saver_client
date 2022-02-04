@@ -4,6 +4,8 @@ import Recipes from "../modules/recipes";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import DisplayIngredient from "./DisplayIngredient";
+import DisplayInstruction from "./DisplayInstruction";
 
 const DisplaySingleRecipe = () => {
   const [recipe, setRecipe] = useState();
@@ -28,12 +30,18 @@ const DisplaySingleRecipe = () => {
   if (recipe === undefined) {
     return <CircularProgress />;
   } else {
+    const instructions = recipe.instructions.map((instruction) => {
+      return <DisplayInstruction instruction={instruction} />;
+    });
+
     return (
       <>
         <Button onClick={handleDelete} data-cy="delete-btn">
           Delete this recipe
         </Button>
         <div data-cy="recipe-title">{recipe.title}</div>
+        <DisplayIngredient ingredients={recipe.ingredients} />
+        <ol>{instructions}</ol>
       </>
     );
   }
