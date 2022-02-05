@@ -10,7 +10,7 @@ const HeaderComponent = () => {
     <AppBar position="static" style={{ background: "#7a1e77" }}>
       <CssBaseline />
       <Toolbar>
-        <Link to="/recipes" className={classes.link} id="recipeCollectionTab">
+        <Link to="/" className={classes.link} id="recipeCollectionTab">
           Saved recipes
         </Link>
         <Link to="/add-recipe" className={classes.link} id="addNewRecipeTab">

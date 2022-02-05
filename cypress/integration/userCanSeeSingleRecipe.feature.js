@@ -60,7 +60,7 @@ describe("Visiting the application, user", () => {
     });
 
     it("is expected to be redirected to collection of recipes", () => {
-      cy.url().should("contain", "/recipes");
+      cy.url().should("not.contain", "/recipes/1");
     });
 
     it("is expected to see a confirmation message", () => {

@@ -24,7 +24,7 @@ const DisplaySingleRecipe = () => {
     const response = await Recipes.delete(id);
     const message = response.data.message;
 
-    navigate("/recipes", { state: { message: message } });
+    navigate("/", { state: { message: message } });
   };
 
   if (recipe === undefined) {

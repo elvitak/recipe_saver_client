@@ -4,6 +4,9 @@ describe("Visiting the application, a user", () => {
     cy.intercept("POST", "/api/recipes", {
       fixture: "create_response.json",
     });
+    cy.intercept("GET", "/api/recipes", {
+      fixture: "index_response.json",
+    });
     cy.visit("/");
     cy.get("#addNewRecipeTab").click();
     cy.get("[data-cy=form-title]").type("Cielaviņa");
