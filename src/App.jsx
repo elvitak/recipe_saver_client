@@ -10,6 +10,7 @@ const App = () => {
     <>
       <HeaderComponent />
       <Routes>
+        <Route path="/" element={<DisplayRecipeCollection />} />
         <Route path="add-recipe" element={<FormToSaveRecipe />} />
         <Route path="recipes" element={<DisplayRecipeCollection />} />
         <Route path="recipes/:id" element={<DisplaySingleRecipe />} />
