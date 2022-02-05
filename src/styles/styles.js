@@ -16,18 +16,14 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {
     flexGrow: 1,
   },
-  navlinks: {
-    marginLeft: theme.spacing(10),
-    display: "flex",
-  },
   link: {
     textDecoration: "none",
     color: "white",
     fontSize: "20px",
     position: "left",
-    marginLeft: theme.spacing(10),
+    marginRight: "20px",
     "&:hover": {
-      color: "black",
+      color: "#d297ff",
     },
   },
 }));

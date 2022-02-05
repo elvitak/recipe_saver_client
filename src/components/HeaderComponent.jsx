@@ -7,17 +7,15 @@ const HeaderComponent = () => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static" style={{ background: "#616161" }}>
+    <AppBar position="static" style={{ background: "#7a1e77" }}>
       <CssBaseline />
       <Toolbar>
-        <div className={classes.navlinks}>
-          <Link to="/recipes" className={classes.link} id="recipeCollectionTab">
-            Saved recipes
-          </Link>
-          <Link to="/add-recipe" className={classes.link} id="addNewRecipeTab">
-            Add new recipe
-          </Link>
-        </div>
+        <Link to="/recipes" className={classes.link} id="recipeCollectionTab">
+          Saved recipes
+        </Link>
+        <Link to="/add-recipe" className={classes.link} id="addNewRecipeTab">
+          Add new recipe
+        </Link>
       </Toolbar>
     </AppBar>
   );
