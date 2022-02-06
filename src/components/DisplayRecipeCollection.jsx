@@ -9,10 +9,15 @@ const DisplayRecipeCollection = () => {
   const [recipes, setRecipes] = useState([]);
   const classes = useStyles();
   const { state } = useLocation();
+  const [message, setMessage] = useState();
 
   const fetchRecipes = async () => {
     const data = await Recipes.index();
-    setRecipes(data.recipes);
+    if (data.message) {
+      setMessage(data.message);
+    } else {
+      setRecipes(data.recipes);
+    }
   };
 
   useEffect(() => {
@@ -42,11 +47,15 @@ const DisplayRecipeCollection = () => {
           </Typography>
         </div>
         <div data-cy="flash-message">{state?.message}</div>
-        <Container className={classes.cardGrid} disableGutters={true}>
-          <Grid data-cy="recipe-collection" container spacing={4}>
-            {recipeCollection}
-          </Grid>
-        </Container>
+        {message ? (
+          <div data-cy="informational-message">{message}</div>
+        ) : (
+          <Container className={classes.cardGrid} disableGutters={true}>
+            <Grid data-cy="recipe-collection" container spacing={4}>
+              {recipeCollection}
+            </Grid>
+          </Container>
+        )}
       </main>
     </>
   );

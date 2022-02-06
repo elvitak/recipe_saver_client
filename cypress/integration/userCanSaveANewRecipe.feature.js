@@ -1,9 +1,6 @@
 /* eslint-disable no-undef */
 describe("Visiting the application, a user", () => {
   before(() => {
-    cy.intercept("POST", "/api/recipes", {
-      fixture: "create_response.json",
-    });
     cy.intercept("GET", "/api/recipes", {
       fixture: "index_response.json",
     });
@@ -32,8 +29,22 @@ describe("Visiting the application, a user", () => {
     cy.get("[data-cy=form-ingredient-input-line]").should("have.length", 3);
   });
 
-  // it("is expected to see aproval message after saving new recipe", () => {
-  //   cy.get("[data-cy=form-create-btn]").click();
-  //   cy.get("[data-cy=message]").should("contain", "Recipe was saved");
-  // });
+  describe("can press create button and see success message", () => {
+    before(() => {
+      cy.intercept("POST", "/api/recipes", {
+        fixture: "create_response.json",
+      });
+    });
+
+    it("is expected to be able to press create", () => {
+      cy.get("[data-cy=form-create-btn]").click();
+    });
+
+    it("is expected to see aproval message after saving new recipe", () => {
+      cy.get("[data-cy=flash-message]").should(
+        "contain",
+        "Recipe was created successfully"
+      );
+    });
+  });
 });

@@ -15,10 +15,11 @@ const FormToSaveRecipe = () => {
   };
 
   const [recipe, setRecipe] = useState(initialState);
+  const [message, setMessage] = useState();
 
   const createRecipe = async () => {
     const response = await Recipes.create(recipe);
-    return response;
+    setMessage(response.data.message);
   };
 
   return (
@@ -34,7 +35,7 @@ const FormToSaveRecipe = () => {
           Save your recipe here
         </Typography>
       </div>
-
+      <div data-cy="flash-message">{message}</div>
       <Container disableGutters>
         <TitleInputField
           title={recipe.title}
