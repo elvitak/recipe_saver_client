@@ -50,6 +50,7 @@ describe("Visiting the application, user", () => {
     before(() => {
       cy.intercept("GET", "/api/recipes", {
         fixture: "index_with_norecipes.json",
+        statusCode: 404,
       });
       cy.visit("/");
       cy.get("#recipeCollectionTab").click();

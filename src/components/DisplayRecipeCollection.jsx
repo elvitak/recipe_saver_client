@@ -12,11 +12,15 @@ const DisplayRecipeCollection = () => {
   const [message, setMessage] = useState();
 
   const fetchRecipes = async () => {
-    const data = await Recipes.index();
-    if (data.message) {
-      setMessage(data.message);
-    } else {
+    try {
+      const data = await Recipes.index();
       setRecipes(data.recipes);
+    } catch (e) {
+      if (e.response.status === 404 && e.response.data.message) {
+        setMessage(e.response.data.message);
+      } else {
+        throw e;
+      }
     }
   };
 

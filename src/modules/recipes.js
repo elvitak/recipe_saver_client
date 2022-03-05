@@ -11,14 +11,19 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 const Recipes = {
   async create(recipe) {
     const ingredientsWithoutEmptyRow = recipe.ingredients.slice(0, -1);
+    const instructions = recipe.instructions.map((text) => {
+      return {
+        instruction: text
+      };
+    });
 
     const recipeRequest = {
       title: recipe.title,
-      ingredients_attributes: ingredientsWithoutEmptyRow,
-      instructions_attributes: recipe.instructions,
+      ingredients: ingredientsWithoutEmptyRow,
+      instructions: instructions
     };
     const response = await axios.post(`${apiURL}/recipes`, {
-      recipe: recipeRequest,
+      recipe: recipeRequest
     });
     return response;
   },
@@ -36,7 +41,7 @@ const Recipes = {
   async delete(id) {
     const response = await axios.delete(`${apiURL}/recipes/${id}`);
     return response;
-  },
+  }
 };
 
 export default Recipes;
