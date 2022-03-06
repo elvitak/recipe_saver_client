@@ -13,6 +13,7 @@ const App = () => {
         <Route path="add-recipe" element={<FormToSaveRecipe />} />
         <Route path="/" element={<DisplayRecipeCollection />} />
         <Route path="recipes/:id" element={<DisplaySingleRecipe />} />
+        <Route path="recipes/:id/edit" element={<FormToSaveRecipe />} />
       </Routes>
     </>
   );

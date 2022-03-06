@@ -4,6 +4,9 @@ describe("User, when clicking on recipe", () => {
     cy.intercept("GET", "api/recipes", {
       fixture: "index_response.json"
     });
+    cy.intercept("GET", "/api/recipes/*", {
+      fixture: "show_response.json"
+    });
     cy.visit("/");
     cy.get("[data-cy=recipe-collection]")
       .children()
@@ -19,9 +22,6 @@ describe("User, when clicking on recipe", () => {
 
   describe('by clicking "Edit" button', () => {
     before(() => {
-      cy.intercept("GET", "/api/recipes/*", {
-        fixture: "show_response.json"
-      });
       cy.get("[data-cy=edit-recipe-btn]").click();
     });
 

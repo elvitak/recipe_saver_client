@@ -36,8 +36,21 @@ const DisplaySingleRecipe = () => {
 
     return (
       <>
-        <Button onClick={handleDelete} data-cy="delete-btn">
+        <Button
+          onClick={handleDelete}
+          data-cy="delete-btn"
+          color="secondary"
+          variant="contained"
+        >
           Delete this recipe
+        </Button>
+        <Button
+          data-cy="edit-recipe-btn"
+          color="secondary"
+          variant="contained"
+          onClick={() => navigate(`/recipes/${id}/edit`)}
+        >
+          Edit
         </Button>
         <div data-cy="recipe-title">{recipe.title}</div>
         <DisplayIngredient ingredients={recipe.ingredients} />
