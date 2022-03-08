@@ -5,7 +5,7 @@ const TitleInputField = ({ title, onTitleChange }) => {
   return (
     <div>
       <TextField
-        data-cy="form-title"
+        data-cy="recipe-title"
         label="Title"
         variant="standard"
         value={title}

@@ -15,10 +15,10 @@ const Recipes = {
     const recipeRequest = {
       title: recipe.title,
       ingredients_attributes: ingredientsWithoutEmptyRow,
-      instructions_attributes: recipe.instructions,
+      instructions_attributes: recipe.instructions
     };
     const response = await axios.post(`${apiURL}/recipes`, {
-      recipe: recipeRequest,
+      recipe: recipeRequest
     });
     return response;
   },
@@ -36,7 +36,7 @@ const Recipes = {
   async delete(id) {
     const response = await axios.delete(`${apiURL}/recipes/${id}`);
     return response;
-  },
+  }
 };
 
 export default Recipes;

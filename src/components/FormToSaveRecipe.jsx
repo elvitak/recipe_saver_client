@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IngridientsInputFields from "./IngridientsInputFields";
 import InstructionsField from "./InstructionsField";
 import TitleInputField from "./TitleInputField";
 import Recipes from "../modules/recipes";
 import { Container, Button, Typography } from "@mui/material";
 import useStyles from "../styles/styles";
+import { useParams } from "react-router-dom";
 
 const FormToSaveRecipe = () => {
   const classes = useStyles();
   const initialState = {
     title: "",
     instructions: [],
-    ingredients: [{ name: "", amount: 0, unit: "" }],
+    ingredients: [{ name: "", amount: 0, unit: "" }]
   };
 
   const [recipe, setRecipe] = useState(initialState);
   const [message, setMessage] = useState();
+  const { id } = useParams();
 
-  const createRecipe = async () => {
-    const response = await Recipes.create(recipe);
-    setMessage(response.data.message);
+  const fetchRecipe = async () => {
+    if (id) {
+      const response = await Recipes.show(id);
+      setRecipe(response.recipe);
+    } else {
+      setRecipe(initialState);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecipe();
+  }, [id]);
+
+  const saveRecipe = async () => {
+    if (id) {
+      const response = await Recipes.update(recipe);
+    } else {
+      const response = await Recipes.create(recipe);
+      setMessage(response.data.message);
+    }
   };
 
   return (
@@ -61,12 +80,8 @@ const FormToSaveRecipe = () => {
             })
           }
         />
-        <Button
-          data-cy="form-create-btn"
-          variant="contained"
-          onClick={createRecipe}
-        >
-          Add Recipe
+        <Button data-cy="save-btn" variant="contained" onClick={saveRecipe}>
+          Save
         </Button>
       </Container>
     </>

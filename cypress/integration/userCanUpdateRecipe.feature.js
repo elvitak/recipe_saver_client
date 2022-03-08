@@ -22,6 +22,9 @@ describe("User, when clicking on recipe", () => {
 
   describe('by clicking "Edit" button', () => {
     before(() => {
+      cy.intercept("GET", "/api/recipes/*", {
+        fixture: "show_response.json"
+      });
       cy.get("[data-cy=edit-recipe-btn]").click();
     });
 
@@ -61,7 +64,7 @@ describe("User, when clicking on recipe", () => {
           fixture: "update_response.json"
         });
         cy.get("[data-cy=recipe-name]").type("{selectall}Modern pancakes");
-        cy.get("[data-cy=submit-btn]").click();
+        cy.get("[data-cy=save-btn]").click();
       });
 
       it("is expected to display successful message", () => {
