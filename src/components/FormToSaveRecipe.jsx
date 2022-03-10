@@ -19,16 +19,14 @@ const FormToSaveRecipe = () => {
   const [message, setMessage] = useState();
   const { id } = useParams();
 
-  const fetchRecipe = async () => {
-    if (id) {
-      const response = await Recipes.show(id);
-      setRecipe(response.recipe);
-    } else {
-      setRecipe(initialState);
-    }
-  };
-
   useEffect(() => {
+    const fetchRecipe = async () => {
+      if (id) {
+        const response = await Recipes.show(id);
+        setRecipe(response.recipe);
+      }
+    };
+
     fetchRecipe();
   }, [id]);
 
