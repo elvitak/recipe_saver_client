@@ -8,7 +8,7 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
         data-cy={"form-ingredient-amount-" + id}
         label={id === 0 ? "Amount" : undefined}
         variant="standard"
-        value={ingredient.amount.value}
+        value={ingredient.amount}
         onChange={(e) =>
           onIngredientChange({ ...ingredient, ...{ amount: e.target.value } })
         }
@@ -18,7 +18,7 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
         data-cy={"form-ingredient-unit-" + id}
         label={id === 0 ? "Unit" : undefined}
         variant="standard"
-        value={ingredient.unit.value}
+        value={ingredient.unit}
         onChange={(e) =>
           onIngredientChange({ ...ingredient, ...{ unit: e.target.value } })
         }
@@ -28,7 +28,7 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
         data-cy={"form-ingredient-name-" + id}
         label={id === 0 ? "Ingredient" : undefined}
         variant="standard"
-        value={ingredient.name.value}
+        value={ingredient.name}
         onChange={(e) =>
           onIngredientChange({ ...ingredient, ...{ name: e.target.value } })
         }
