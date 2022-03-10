@@ -33,26 +33,35 @@ describe("User, when clicking on recipe", () => {
     });
 
     it("is expected to display pre-filled recipe title in input field", () => {
-      cy.get("[data-cy=recipe-title]").should(
-        "contain",
+      cy.get("[data-cy=recipe-title] input").should(
+        "have.value",
         "Good Old Fashioned Pancakes"
       );
     });
 
     it("is expected to display pre-filled recipe ingredients amount in input field", () => {
-      cy.get("[data-cy=ingredient-amount-0]").should("contain", "100");
+      cy.get("[data-cy=form-ingredient-amount-0] input").should(
+        "have.value",
+        "100"
+      );
     });
 
     it("is expected to display pre-filled recipe ingredients unit in input field", () => {
-      cy.get("[data-cy=ingredient-unit-0]").should("contain", "grams");
+      cy.get("[data-cy=form-ingredient-unit-0] input").should(
+        "have.value",
+        "grams"
+      );
     });
 
     it("is expected to display pre-filled recipe ingredients name in input field", () => {
-      cy.get("[data-cy=ingredient-name-0]").should("contain", "sugar");
+      cy.get("[data-cy=form-ingredient-name-0] input").should(
+        "have.value",
+        "sugar"
+      );
     });
 
     it("is expected to display pre-filled recipe instructions in input field", () => {
-      cy.get("[data-cy=instructions]").should(
+      cy.get("[data-cy=form-instructions] textarea").should(
         "contain",
         "In a large bowl, sift together the flour, baking powder, salt and sugar. Make a well in the center and pour in the milk, egg and melted butter; mix until smooth."
       );
