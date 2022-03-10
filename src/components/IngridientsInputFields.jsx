@@ -4,21 +4,36 @@ import IngredientInput from "./IngredientInput";
 const IngridientsInputFields = ({ ingredients, onIngredientsChange }) => {
   const handleIngredientChange = (index, ingredient) => {
     const changedIngredients = [...ingredients];
-    changedIngredients[index] = ingredient;
-    if (changedIngredients[changedIngredients.length - 1].name !== "") {
-      changedIngredients.push({ name: "", amount: 0, unit: "" });
+
+    if (index === -1) {
+      changedIngredients.push(ingredient);
+    } else {
+      changedIngredients[index] = ingredient;
     }
+
     onIngredientsChange(changedIngredients);
   };
 
-  const allIngredientsUI = ingredients.map((ingredient, index) => (
-    <IngredientInput
-      ingredient={ingredient}
-      onIngredientChange={(newValue) => handleIngredientChange(index, newValue)}
-      id={index}
-      key={index}
-    />
-  ));
+  const ingredientsWithEmpty = [
+    ...ingredients.map((ingredient, index) => ({
+      ingredient: ingredient,
+      index: index
+    })),
+    { ingredient: { name: "", amount: "", unit: "" }, index: -1 }
+  ];
+  const allIngredientsUI = ingredientsWithEmpty.map(({ ingredient, index }) => {
+    return (
+      <IngredientInput
+        ingredient={ingredient}
+        onIngredientChange={(newValue) =>
+          handleIngredientChange(index, newValue)
+        }
+        id={index}
+        key={index}
+      />
+    );
+  });
+
   return <div>{allIngredientsUI}</div>;
 };
 

@@ -10,11 +10,9 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 
 const Recipes = {
   async create(recipe) {
-    const ingredientsWithoutEmptyRow = recipe.ingredients.slice(0, -1);
-
     const recipeRequest = {
       title: recipe.title,
-      ingredients_attributes: ingredientsWithoutEmptyRow,
+      ingredients_attributes: recipe.ingredients,
       instructions_attributes: recipe.instructions
     };
     const response = await axios.post(`${apiURL}/recipes`, {
