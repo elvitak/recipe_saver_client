@@ -34,6 +34,17 @@ const Recipes = {
   async delete(id) {
     const response = await axios.delete(`${apiURL}/recipes/${id}`);
     return response;
+  },
+
+  async update(recipe) {
+    const response = await axios.put(`${apiURL}/recipes/${recipe.id}`, {
+      recipe: {
+        title: recipe.title,
+        ingredients_attributes: recipe.ingredients,
+        instructions_attributes: recipe.instructions
+      }
+    });
+    return response;
   }
 };
 
