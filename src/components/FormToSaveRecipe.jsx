@@ -5,10 +5,11 @@ import TitleInputField from "./TitleInputField";
 import Recipes from "../modules/recipes";
 import { Container, Button, Typography } from "@mui/material";
 import useStyles from "../styles/styles";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const FormToSaveRecipe = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
   const initialState = {
     title: "",
     instructions: [],
@@ -34,6 +35,7 @@ const FormToSaveRecipe = () => {
     if (id) {
       const response = await Recipes.update(recipe);
       setMessage(response.data.message);
+      setTimeout(() => navigate(`/recipes/${id}`), 2000);
     } else {
       const response = await Recipes.create(recipe);
       setMessage(response.data.message);
