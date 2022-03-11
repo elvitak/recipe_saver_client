@@ -70,9 +70,9 @@ describe("User, when clicking on recipe", () => {
     describe("can update the recipe and save", () => {
       before(() => {
         cy.intercept("PUT", "api/recipes/**", {
-          fixture: "update_response.json"
+          fixture: "update_recipe_response.json"
         });
-        cy.get("[data-cy=recipe-name]").type("{selectall}Modern pancakes");
+        cy.get("[data-cy=recipe-title]").type("{selectall}Modern pancakes");
         cy.get("[data-cy=save-btn]").click();
       });
 

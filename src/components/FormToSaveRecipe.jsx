@@ -33,6 +33,7 @@ const FormToSaveRecipe = () => {
   const saveRecipe = async () => {
     if (id) {
       const response = await Recipes.update(recipe);
+      setMessage(response.data.message);
     } else {
       const response = await Recipes.create(recipe);
       setMessage(response.data.message);
