@@ -4,7 +4,7 @@ import {
   CardContent,
   CardActions,
   Button,
-  Card,
+  Card
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import useStyles from "../styles/styles";
@@ -27,9 +27,6 @@ const RecipeCard = ({ recipe }) => {
           component={Link}
         >
           View
-        </Button>
-        <Button size="small" color="primary">
-          Edit
         </Button>
       </CardActions>
     </Card>
