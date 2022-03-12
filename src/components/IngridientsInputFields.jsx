@@ -5,12 +5,11 @@ const IngridientsInputFields = ({ ingredients, onIngredientsChange }) => {
   const handleIngredientChange = (index, ingredient) => {
     const changedIngredients = [...ingredients];
 
-    if (index === -1) {
+    if (index === ingredients.length) {
       changedIngredients.push(ingredient);
     } else {
       changedIngredients[index] = ingredient;
     }
-
     onIngredientsChange(changedIngredients);
   };
 
@@ -19,8 +18,12 @@ const IngridientsInputFields = ({ ingredients, onIngredientsChange }) => {
       ingredient: ingredient,
       index: index
     })),
-    { ingredient: { name: "", amount: "", unit: "" }, index: -1 }
+    {
+      ingredient: { name: "", amount: "", unit: "" },
+      index: ingredients.length
+    }
   ];
+
   const allIngredientsUI = ingredientsWithEmpty.map(({ ingredient, index }) => {
     return (
       <IngredientInput

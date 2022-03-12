@@ -13,7 +13,7 @@ const FormToSaveRecipe = () => {
   const initialState = {
     title: "",
     instructions: [],
-    ingredients: [{ name: "", amount: 0, unit: "" }]
+    ingredients: []
   };
 
   const [recipe, setRecipe] = useState(initialState);
