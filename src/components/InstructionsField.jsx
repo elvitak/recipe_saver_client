@@ -2,6 +2,17 @@ import React from "react";
 import { TextField } from "@mui/material";
 
 const InstructionsField = ({ instructions, onInstructionsChange }) => {
+  const handleOnChange = (e) => {
+    const instructions = e.target.value
+      .split("\n\n")
+      .map((line) => ({ instruction: line }));
+    onInstructionsChange(instructions);
+  };
+
+  const lines = instructions
+    .map((instruction) => instruction.instruction)
+    .join("\n\n");
+
   return (
     <div>
       <TextField
@@ -10,8 +21,8 @@ const InstructionsField = ({ instructions, onInstructionsChange }) => {
         multiline
         fullWidth
         variant="standard"
-        value={instructions.join("\n\n")}
-        onChange={(e) => onInstructionsChange(e.target.value.split("\n\n"))}
+        value={lines}
+        onChange={handleOnChange}
       />
     </div>
   );

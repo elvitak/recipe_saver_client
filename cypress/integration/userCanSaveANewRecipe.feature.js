@@ -2,11 +2,11 @@
 describe("Visiting the application, a user", () => {
   before(() => {
     cy.intercept("GET", "/api/recipes", {
-      fixture: "index_response.json",
+      fixture: "index_response.json"
     });
     cy.visit("/");
     cy.get("#addNewRecipeTab").click();
-    cy.get("[data-cy=form-title]").type("Cielaviņa");
+    cy.get("[data-cy=recipe-title]").type("Cielaviņa");
     cy.get("[data-cy=form-ingredient-amount-0]").type(2);
     cy.get("[data-cy=form-ingredient-unit-0]").type("g");
     cy.get("[data-cy=form-ingredient-name-0]").type("olas");
@@ -32,12 +32,12 @@ describe("Visiting the application, a user", () => {
   describe("can press create button and see success message", () => {
     before(() => {
       cy.intercept("POST", "/api/recipes", {
-        fixture: "create_response.json",
+        fixture: "create_response.json"
       });
     });
 
     it("is expected to be able to press create", () => {
-      cy.get("[data-cy=form-create-btn]").click();
+      cy.get("[data-cy=save-btn]").click();
     });
 
     it("is expected to see aproval message after saving new recipe", () => {
