@@ -67,13 +67,10 @@ describe("User, when clicking on recipe", () => {
       );
     });
 
-    describe("can update the recipe and save", () => {
-      before(() => {
+    describe("can update the recipe and save new values", () => {
+      beforeEach(() => {
         cy.intercept("PUT", "api/recipes/**", {
           fixture: "update_recipe_response.json"
-        });
-        cy.intercept("GET", "/api/recipes/*", {
-          fixture: "updated_show_recipe_response.json"
         });
         cy.get("[data-cy=recipe-title]").type("{selectall}Modern pancakes");
         cy.get("[data-cy=save-btn]").click();
@@ -86,8 +83,16 @@ describe("User, when clicking on recipe", () => {
         );
       });
 
-      it("is expected to be redirected to coresponding single recipe view", () => {
-        cy.url().should("not.contain", "recipes/1/edit");
+      describe("user is redirected and see updated values", () => {
+        before(() => {
+          cy.intercept("GET", "/api/recipes/*", {
+            fixture: "updated_show_recipe_response.json"
+          });
+        });
+
+        it("is expected to be redirected to coresponding single recipe view", () => {
+          cy.url().should("not.contain", "recipes/1/edit");
+        });
       });
     });
   });
