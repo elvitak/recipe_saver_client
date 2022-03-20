@@ -16,6 +16,13 @@ const HeaderComponent = () => {
         <Link to="/add-recipe" className={classes.link} id="addNewRecipeTab">
           Add new recipe
         </Link>
+        <Link
+          to="/recipes/random-generated"
+          className={classes.link}
+          id="generateTab"
+        >
+          Generate weekly menu
+        </Link>
       </Toolbar>
     </AppBar>
   );
