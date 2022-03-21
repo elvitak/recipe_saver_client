@@ -21,9 +21,16 @@ const Recipes = {
     return response;
   },
 
-  async index() {
-    const { data } = await axios.get(`${apiURL}/recipes`);
-    return data;
+  async index(random_sample_size) {
+    if (random_sample_size) {
+      const { data } = await axios.get(`${apiURL}/recipes`, {
+        random_sample_size: random_sample_size
+      });
+      return data;
+    } else {
+      const { data } = await axios.get(`${apiURL}/recipes`);
+      return data;
+    }
   },
 
   async show(id) {
