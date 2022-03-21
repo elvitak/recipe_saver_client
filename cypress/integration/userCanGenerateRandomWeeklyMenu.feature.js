@@ -16,23 +16,18 @@ describe("User, visiting the application ", () => {
     });
 
     it("is expected to see 7 recipes after generate button is clicked", () => {
-      cy.get("[data-cy=random-recipes]").children().should("have.length", 7);
+      cy.get("tr").should("have.length", 7);
     });
 
     it("is expected to see recipes divided by weekdays", () => {
       cy.get("[data-cy=random-recipes]")
         .children()
         .first()
-        .within()
         .should("contain", "Monday");
     });
 
     it("is expected to see right recipe titles", () => {
-      cy.get("[data-cy=random-recipes]")
-        .children()
-        .first()
-        .within()
-        .should("contain", "Pancakes");
+      cy.get("[data-cy=random-recipes-0]").should("contain", "Pancakes");
     });
   });
 });
