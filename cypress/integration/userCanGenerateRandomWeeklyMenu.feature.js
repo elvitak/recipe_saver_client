@@ -42,5 +42,9 @@ describe("User, visiting the application ", () => {
     it("is expected to change recipe title", () => {
       cy.get("[data-cy=random-recipes-0]").should("contain", "Meatballs");
     });
+
+    it("is expected to still see seven recipes", () => {
+      cy.get("tr").should("have.length", 7);
+    });
   });
 });
