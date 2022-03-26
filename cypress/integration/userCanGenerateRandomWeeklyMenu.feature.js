@@ -30,4 +30,21 @@ describe("User, visiting the application ", () => {
       cy.get("[data-cy=random-recipes-0]").should("contain", "Pancakes");
     });
   });
+
+  describe("can change any recipe in randomly generated menu", () => {
+    before(() => {
+      cy.intercept("GET", "/api/recipes", {
+        fixture: "index_response_with_changed_random_recipes.json"
+      });
+      cy.get("[data-cy=change-random-recipe-0]").click();
+    });
+
+    it("is expected to change recipe title", () => {
+      cy.get("[data-cy=random-recipes-0]").should("contain", "Meatballs");
+    });
+
+    it("is expected to still see seven recipes", () => {
+      cy.get("tr").should("have.length", 7);
+    });
+  });
 });

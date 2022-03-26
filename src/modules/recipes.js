@@ -21,10 +21,10 @@ const Recipes = {
     return response;
   },
 
-  async index(random_sample_size) {
-    if (random_sample_size) {
+  async index(randomSampleSize) {
+    if (randomSampleSize) {
       const { data } = await axios.get(`${apiURL}/recipes`, {
-        random_sample_size: random_sample_size
+        random_sample_size: randomSampleSize
       });
       return data;
     } else {
