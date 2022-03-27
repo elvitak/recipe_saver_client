@@ -17,7 +17,6 @@ describe("Visiting the application, a user", () => {
       "Vispirms sāk ar bezē kārtu gatavošanu - olu baltumus lej mikserbļodā, pievieno šķipsniņu sāls, tad sāk kulšanu."
     );
     cy.get("[data-cy=attach-image]").attachFile("./pancakes.jpeg");
-    cy.get("[data-cy=submit-image-btn]").click();
   });
 
   it("is expected to see a header", () => {
