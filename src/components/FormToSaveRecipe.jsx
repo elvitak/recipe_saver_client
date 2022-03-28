@@ -109,7 +109,7 @@ const FormToSaveRecipe = () => {
               type="file"
             />
             <Button variant="contained" component="span">
-              Image
+              Add Image
             </Button>
           </label>
           <Typography
