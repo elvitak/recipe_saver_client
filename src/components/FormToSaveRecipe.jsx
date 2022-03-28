@@ -3,7 +3,7 @@ import IngridientsInputFields from "./IngridientsInputFields";
 import InstructionsField from "./InstructionsField";
 import TitleInputField from "./TitleInputField";
 import Recipes from "../modules/recipes";
-import { Container, Button, Typography, Input } from "@mui/material";
+import { Container, Button, Typography } from "@mui/material";
 import useStyles from "../styles/styles";
 import { useParams, useNavigate } from "react-router-dom";
 import utilities from "../modules/utilities";
