@@ -13,7 +13,8 @@ const Recipes = {
     const recipeRequest = {
       title: recipe.title,
       ingredients_attributes: recipe.ingredients,
-      instructions_attributes: recipe.instructions
+      instructions_attributes: recipe.instructions,
+      image: recipe.image
     };
     const response = await axios.post(`${apiURL}/recipes`, {
       recipe: recipeRequest

@@ -6,6 +6,7 @@ import Recipes from "../modules/recipes";
 import { Container, Button, Typography } from "@mui/material";
 import useStyles from "../styles/styles";
 import { useParams, useNavigate } from "react-router-dom";
+import ImageInputField from "./ImageInputField";
 
 const FormToSaveRecipe = () => {
   const classes = useStyles();
@@ -13,9 +14,9 @@ const FormToSaveRecipe = () => {
   const initialState = {
     title: "",
     instructions: [],
-    ingredients: []
+    ingredients: [],
+    image: ""
   };
-
   const [recipe, setRecipe] = useState(initialState);
   const [message, setMessage] = useState();
   const { id } = useParams();
@@ -78,6 +79,13 @@ const FormToSaveRecipe = () => {
           onInstructionsChange={(value) =>
             setRecipe((previousRecipe) => {
               return { ...previousRecipe, ...{ instructions: value } };
+            })
+          }
+        />
+        <ImageInputField
+          setImage={(value) =>
+            setRecipe((previousRecipe) => {
+              return { ...previousRecipe, ...{ image: value } };
             })
           }
         />

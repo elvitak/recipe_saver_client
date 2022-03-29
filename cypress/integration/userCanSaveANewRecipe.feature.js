@@ -16,6 +16,7 @@ describe("Visiting the application, a user", () => {
     cy.get("[data-cy=form-instructions]").type(
       "Vispirms sāk ar bezē kārtu gatavošanu - olu baltumus lej mikserbļodā, pievieno šķipsniņu sāls, tad sāk kulšanu."
     );
+    cy.get("[data-cy=attach-image]").attachFile("./pancakes.jpeg");
   });
 
   it("is expected to see a header", () => {
