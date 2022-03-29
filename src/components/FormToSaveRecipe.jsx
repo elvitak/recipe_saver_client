@@ -6,8 +6,7 @@ import Recipes from "../modules/recipes";
 import { Container, Button, Typography } from "@mui/material";
 import useStyles from "../styles/styles";
 import { useParams, useNavigate } from "react-router-dom";
-import utilities from "../modules/utilities";
-import { styled } from "@mui/material/styles";
+import ImageInputField from "./ImageInputField";
 
 const FormToSaveRecipe = () => {
   const classes = useStyles();
@@ -18,14 +17,8 @@ const FormToSaveRecipe = () => {
     ingredients: [],
     image: ""
   };
-
-  const Input = styled("input")({
-    display: "none"
-  });
-
   const [recipe, setRecipe] = useState(initialState);
   const [message, setMessage] = useState();
-  const [fileName, setFileName] = useState("");
   const { id } = useParams();
 
   useEffect(() => {
@@ -48,14 +41,6 @@ const FormToSaveRecipe = () => {
       const response = await Recipes.create(recipe);
       setMessage(response.data.message);
     }
-  };
-
-  const handleImage = async (event) => {
-    event.preventDefault();
-    const file = event.target.files[0];
-    file.name && setFileName(file.name);
-    const encodedFile = await utilities.imageEncoder(file);
-    setRecipe({ ...recipe, image: encodedFile });
   };
 
   return (
@@ -97,29 +82,13 @@ const FormToSaveRecipe = () => {
             })
           }
         />
-        <div>
-          <label htmlFor="contained-button-file">
-            <Input
-              id="contained-button-file"
-              data-cy="attach-image"
-              accept="image/*"
-              onChange={handleImage}
-              name="image"
-              multiple
-              type="file"
-            />
-            <Button variant="contained" component="span">
-              Add Image
-            </Button>
-          </label>
-          <Typography
-            variant="caption"
-            gutterBottom
-            style={{ marginLeft: "10px" }}
-          >
-            {fileName}
-          </Typography>
-        </div>
+        <ImageInputField
+          setImage={(value) =>
+            setRecipe((previousRecipe) => {
+              return { ...previousRecipe, ...{ image: value } };
+            })
+          }
+        />
         <Button data-cy="save-btn" variant="contained" onClick={saveRecipe}>
           Save
         </Button>
