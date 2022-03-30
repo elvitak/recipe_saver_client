@@ -8,6 +8,7 @@ import {
   IconButton
 } from "@mui/material";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
+import Headline from "./Headline";
 
 const RandomRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -39,24 +40,27 @@ const RandomRecipes = () => {
   };
 
   return (
-    <Table>
-      <TableBody>
-        {recipes.map((recipe, index) => (
-          <TableRow data-cy="random-recipes" key={recipe.id}>
-            <TableCell>{weekdays[index]}</TableCell>
-            <TableCell data-cy={`random-recipes-${index}`}>
-              {recipe.title}
-            </TableCell>
-            <IconButton onClick={() => replaceRecipe(index)}>
-              <ChangeCircleIcon
-                color="secondary"
-                data-cy={`change-random-recipe-${index}`}
-              />
-            </IconButton>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+    <>
+      <Headline viewHeadline={"Your menu for a week"} />
+      <Table>
+        <TableBody>
+          {recipes.map((recipe, index) => (
+            <TableRow data-cy="random-recipes" key={recipe.id}>
+              <TableCell>{weekdays[index]}</TableCell>
+              <TableCell data-cy={`random-recipes-${index}`}>
+                {recipe.title}
+              </TableCell>
+              <IconButton onClick={() => replaceRecipe(index)}>
+                <ChangeCircleIcon
+                  color="secondary"
+                  data-cy={`change-random-recipe-${index}`}
+                />
+              </IconButton>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </>
   );
 };
 
