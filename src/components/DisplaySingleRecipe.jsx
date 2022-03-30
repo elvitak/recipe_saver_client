@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DisplayIngredient from "./DisplayIngredient";
 import DisplayInstruction from "./DisplayInstruction";
+import Headline from "./Headline";
 
 const DisplaySingleRecipe = () => {
   const [recipe, setRecipe] = useState();
@@ -23,7 +24,6 @@ const DisplaySingleRecipe = () => {
   const handleDelete = async () => {
     const response = await Recipes.delete(id);
     const message = response.data.message;
-
     navigate("/", { state: { message: message } });
   };
 
@@ -52,7 +52,7 @@ const DisplaySingleRecipe = () => {
         >
           Edit
         </Button>
-        <div data-cy="recipe-title">{recipe.title}</div>
+        <Headline viewHeadline={recipe.title} />
         <DisplayIngredient ingredients={recipe.ingredients} />
         <ol>{instructions}</ol>
       </>

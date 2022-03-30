@@ -3,10 +3,10 @@ describe("Visiting the application, user", () => {
   describe("who wants to see single recipe", () => {
     before(() => {
       cy.intercept("GET", "/api/recipes", {
-        fixture: "index_response.json",
+        fixture: "index_response.json"
       });
       cy.intercept("GET", "/api/recipes/*", {
-        fixture: "show_response.json",
+        fixture: "show_response.json"
       }).as("getRecipe");
       cy.visit("/");
       cy.get("#recipeCollectionTab").click();
@@ -27,7 +27,7 @@ describe("Visiting the application, user", () => {
     });
 
     it("is expected to see the right title", () => {
-      cy.get("[data-cy=recipe-title]").should(
+      cy.get("[data-cy=view-header]").should(
         "contain",
         "Good Old Fashioned Pancakes"
       );
@@ -47,10 +47,10 @@ describe("Visiting the application, user", () => {
   describe("who wants to delete a recipe", () => {
     before(() => {
       cy.intercept("DELETE", "/api/recipes/*", {
-        fixture: "delete_response.json",
+        fixture: "delete_response.json"
       }).as("deleteRecipe");
       cy.intercept("GET", "/api/recipes", {
-        fixture: "index_response.json",
+        fixture: "index_response.json"
       });
     });
 
