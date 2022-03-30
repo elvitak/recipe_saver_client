@@ -32,7 +32,7 @@ describe("User can navigate the app", () => {
     });
 
     it("is expected to display My recipes header", () => {
-      cy.get("[data-cy=add-new-recipe]").should(
+      cy.get("[data-cy=view-header]").should(
         "contain",
         "Save your recipe here"
       );

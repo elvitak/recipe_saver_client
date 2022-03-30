@@ -3,12 +3,11 @@ import IngridientsInputFields from "./IngridientsInputFields";
 import InstructionsField from "./InstructionsField";
 import TitleInputField from "./TitleInputField";
 import Recipes from "../modules/recipes";
-import { Container, Button, Typography } from "@mui/material";
-import useStyles from "../styles/styles";
+import { Container, Button } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
+import Headline from "./Headline";
 
 const FormToSaveRecipe = () => {
-  const classes = useStyles();
   const navigate = useNavigate();
   const initialState = {
     title: "",
@@ -44,17 +43,7 @@ const FormToSaveRecipe = () => {
 
   return (
     <>
-      <div className={classes.container}>
-        <Typography
-          data-cy="add-new-recipe"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          Save your recipe here
-        </Typography>
-      </div>
+      <Headline viewHeadline={"Save your recipe here"} />
       <div data-cy="flash-message">{message}</div>
       <Container disableGutters>
         <TitleInputField
