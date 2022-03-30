@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Container, Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import Recipes from "../modules/recipes";
 import useStyles from "../styles/styles";
 import RecipeCard from "./RecipeCard";
 import { useLocation } from "react-router-dom";
+import Headline from "./Headline";
 
 const DisplayRecipeCollection = () => {
   const [recipes, setRecipes] = useState([]);
@@ -35,17 +36,7 @@ const DisplayRecipeCollection = () => {
   return (
     <>
       <main>
-        <div className={classes.container}>
-          <Typography
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-            data-cy="collection-header"
-          >
-            Saved recipes
-          </Typography>
-        </div>
+        <Headline viewHeadline={"Saved recipes"} />
         <div data-cy="flash-message">{state?.message}</div>
         {message ? (
           <div data-cy="informational-message">{message}</div>
