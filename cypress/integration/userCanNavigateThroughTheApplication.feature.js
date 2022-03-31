@@ -2,7 +2,7 @@
 describe("User can navigate the app", () => {
   before(() => {
     cy.intercept("GET", "/api/recipes", {
-      fixture: "index_response.json",
+      fixture: "index_response.json"
     });
     cy.visit("/");
   });
@@ -14,7 +14,7 @@ describe("User can navigate the app", () => {
     });
 
     it("is expected to display Saved recipes header", () => {
-      cy.get("[data-cy=collection-header]").should("contain", "Saved recipes");
+      cy.get("[data-cy=view-header]").should("contain", "Saved recipes");
     });
 
     it("is expected to display correct url", () => {
@@ -32,7 +32,7 @@ describe("User can navigate the app", () => {
     });
 
     it("is expected to display My recipes header", () => {
-      cy.get("[data-cy=add-new-recipe]").should(
+      cy.get("[data-cy=view-header]").should(
         "contain",
         "Save your recipe here"
       );

@@ -20,10 +20,7 @@ describe("Visiting the application, a user", () => {
   });
 
   it("is expected to see a header", () => {
-    cy.get("[data-cy=add-new-recipe]").should(
-      "contain",
-      "Save your recipe here"
-    );
+    cy.get("[data-cy=view-header]").should("contain", "Save your recipe here");
   });
 
   it("is expected to be able to enter new ingredient in an empty row", () => {

@@ -15,6 +15,10 @@ describe("User, visiting the application ", () => {
       cy.get("#generateTab").click();
     });
 
+    it("is expected to see a header", () => {
+      cy.get("[data-cy=view-header]").should("contain", "Your menu for a week");
+    });
+
     it("is expected to see 7 recipes after generate button is clicked", () => {
       cy.get("tr").should("have.length", 7);
     });
