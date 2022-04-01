@@ -38,6 +38,7 @@ const FormToSaveRecipe = () => {
       setTimeout(() => navigate(`/recipes/${id}`), 2000);
     } else {
       const response = await Recipes.create(recipe);
+      setRecipe(initialState);
       setMessage(response.data.message);
     }
   };

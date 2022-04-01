@@ -6,15 +6,15 @@ describe("Visiting the application, a user", () => {
     });
     cy.visit("/");
     cy.get("#addNewRecipeTab").click();
-    cy.get("[data-cy=recipe-title]").type("Cielaviņa");
+    cy.get("[data-cy=recipe-title]").type("Pancakes");
     cy.get("[data-cy=form-ingredient-amount-0]").type(2);
-    cy.get("[data-cy=form-ingredient-unit-0]").type("g");
-    cy.get("[data-cy=form-ingredient-name-0]").type("olas");
+    cy.get("[data-cy=form-ingredient-unit-0]").type("gb");
+    cy.get("[data-cy=form-ingredient-name-0]").type("eggs");
     cy.get("[data-cy=form-ingredient-amount-1]").type(150);
-    cy.get("[data-cy=form-ingredient-unit-1]").type("grami");
-    cy.get("[data-cy=form-ingredient-name-1]").type("miltu");
+    cy.get("[data-cy=form-ingredient-unit-1]").type("grams");
+    cy.get("[data-cy=form-ingredient-name-1]").type("flour");
     cy.get("[data-cy=form-instructions]").type(
-      "Vispirms sāk ar bezē kārtu gatavošanu - olu baltumus lej mikserbļodā, pievieno šķipsniņu sāls, tad sāk kulšanu."
+      "Mix ingredients together. Bake it."
     );
     cy.get("[data-cy=attach-image]").attachFile("./pancakes.jpeg");
   });
@@ -32,10 +32,15 @@ describe("Visiting the application, a user", () => {
       cy.intercept("POST", "/api/recipes", {
         fixture: "create_response.json"
       });
+      cy.get("[data-cy=save-btn]").click();
     });
 
-    it("is expected to be able to press create", () => {
-      cy.get("[data-cy=save-btn]").click();
+    it("is expected to clear recipe title field", () => {
+      cy.get("[data-cy=recipe-title]").should("not.contain", "Pancakes");
+    });
+
+    it("is expected to clear recipe ingredient field", () => {
+      cy.get("[data-cy=form-ingredient-name-0]").should("not.contain", "eggs");
     });
 
     it("is expected to see aproval message after saving new recipe", () => {
