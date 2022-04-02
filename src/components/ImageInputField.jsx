@@ -20,6 +20,7 @@ const ImageInputField = ({ setImage }) => {
     <div>
       <label htmlFor="contained-button-file">
         <Input
+          id="contained-button-file"
           data-cy="attach-image"
           accept="image/*"
           onChange={handleImage}
