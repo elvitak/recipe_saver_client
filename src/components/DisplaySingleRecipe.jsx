@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Recipes from "../modules/recipes";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Button } from "@mui/material";
 import DisplayIngredient from "./DisplayIngredient";
 import DisplayInstruction from "./DisplayInstruction";
 import Headline from "./Headline";
 import SingleRecipeDelete from "./SingleRecipeDelete";
+import SingleRecipeEdit from "./SingleRecipeEdit";
 
 const DisplaySingleRecipe = () => {
   const [recipe, setRecipe] = useState();
-  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,14 +31,7 @@ const DisplaySingleRecipe = () => {
       <>
         <Headline viewHeadline={recipe.title} />
         <SingleRecipeDelete />
-        <Button
-          data-cy="edit-recipe-btn"
-          color="secondary"
-          variant="contained"
-          onClick={() => navigate(`/recipes/${id}/edit`)}
-        >
-          Edit
-        </Button>
+        <SingleRecipeEdit />
         <DisplayIngredient ingredients={recipe.ingredients} />
         <ol>{instructions}</ol>
       </>
