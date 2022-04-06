@@ -35,19 +35,17 @@ const DisplayRecipeCollection = () => {
 
   return (
     <>
-      <main>
-        <Headline viewHeadline={"Saved recipes"} />
-        <div data-cy="flash-message">{state?.message}</div>
-        {message ? (
-          <div data-cy="informational-message">{message}</div>
-        ) : (
-          <Container className={classes.cardGrid} disableGutters={true}>
-            <Grid data-cy="recipe-collection" container spacing={4}>
-              {recipeCollection}
-            </Grid>
-          </Container>
-        )}
-      </main>
+      <Headline viewHeadline={"Saved recipes"} />
+      <div data-cy="flash-message">{state?.message}</div>
+      {message ? (
+        <div data-cy="informational-message">{message}</div>
+      ) : (
+        <Container className={classes.cardGrid} disableGutters={true}>
+          <Grid data-cy="recipe-collection" container spacing={4}>
+            {recipeCollection}
+          </Grid>
+        </Container>
+      )}
     </>
   );
 };

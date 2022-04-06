@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Recipes from "../modules/recipes";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import DisplayIngredient from "./DisplayIngredient";
 import DisplayInstruction from "./DisplayInstruction";
 import Headline from "./Headline";
+import SingleRecipeDelete from "./SingleRecipeDelete";
+import SingleRecipeEdit from "./SingleRecipeEdit";
 
 const DisplaySingleRecipe = () => {
   const [recipe, setRecipe] = useState();
-  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,12 +20,6 @@ const DisplaySingleRecipe = () => {
     fetchRecipe();
   }, [id]);
 
-  const handleDelete = async () => {
-    const response = await Recipes.delete(id);
-    const message = response.data.message;
-    navigate("/", { state: { message: message } });
-  };
-
   if (recipe === undefined) {
     return <CircularProgress />;
   } else {
@@ -36,23 +29,9 @@ const DisplaySingleRecipe = () => {
 
     return (
       <>
-        <Button
-          onClick={handleDelete}
-          data-cy="delete-btn"
-          color="secondary"
-          variant="contained"
-        >
-          Delete this recipe
-        </Button>
-        <Button
-          data-cy="edit-recipe-btn"
-          color="secondary"
-          variant="contained"
-          onClick={() => navigate(`/recipes/${id}/edit`)}
-        >
-          Edit
-        </Button>
         <Headline viewHeadline={recipe.title} />
+        <SingleRecipeDelete />
+        <SingleRecipeEdit />
         <DisplayIngredient ingredients={recipe.ingredients} />
         <ol>{instructions}</ol>
       </>

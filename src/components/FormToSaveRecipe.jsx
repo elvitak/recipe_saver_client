@@ -43,6 +43,12 @@ const FormToSaveRecipe = () => {
     }
   };
 
+  const handleChange = (propName, value) => {
+    setRecipe((previousRecipe) => {
+      return { ...previousRecipe, [propName]: value };
+    });
+  };
+
   return (
     <>
       <Headline viewHeadline={"Save your recipe here"} />
@@ -50,35 +56,17 @@ const FormToSaveRecipe = () => {
       <Container disableGutters>
         <TitleInputField
           title={recipe.title}
-          onTitleChange={(value) =>
-            setRecipe((previousRecipe) => {
-              return { ...previousRecipe, ...{ title: value } };
-            })
-          }
+          onTitleChange={(value) => handleChange("title", value)}
         />
         <IngridientsInputFields
           ingredients={recipe.ingredients}
-          onIngredientsChange={(value) =>
-            setRecipe((previousRecipe) => {
-              return { ...previousRecipe, ...{ ingredients: value } };
-            })
-          }
+          onIngredientsChange={(value) => handleChange("ingredients", value)}
         />
         <InstructionsField
           instructions={recipe.instructions}
-          onInstructionsChange={(value) =>
-            setRecipe((previousRecipe) => {
-              return { ...previousRecipe, ...{ instructions: value } };
-            })
-          }
+          onInstructionsChange={(value) => handleChange("instructions", value)}
         />
-        <ImageInputField
-          setImage={(value) =>
-            setRecipe((previousRecipe) => {
-              return { ...previousRecipe, ...{ image: value } };
-            })
-          }
-        />
+        <ImageInputField setImage={(value) => handleChange("image", value)} />
         <Button data-cy="save-btn" variant="contained" onClick={saveRecipe}>
           Save
         </Button>
