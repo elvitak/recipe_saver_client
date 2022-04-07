@@ -51,4 +51,14 @@ describe("User, visiting the application ", () => {
       cy.get("tr").should("have.length", 7);
     });
   });
+
+  describe("can delete any recipe in randomly generated menu", () => {
+    before(() => {
+      cy.get("[data-cy=delete-random-recipe-2]").click();
+    });
+
+    it("is expected to remove recipe title", () => {
+      cy.get("[data-cy=random-recipes-2]").should("not.contain", "Carrot cake");
+    });
+  });
 });
