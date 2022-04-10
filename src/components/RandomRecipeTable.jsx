@@ -7,9 +7,9 @@ import {
   IconButton
 } from "@mui/material";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
-import DeleteIcon from "@mui/icons-material/Delete";
 import Recipes from "../modules/recipes";
 import weekdays from "../modules/weekdays";
+import RandomRecipeDelete from "./RandomRecipeDelete";
 
 const RandomRecipeTable = () => {
   const [recipes, setRecipes] = useState([]);
@@ -48,12 +48,10 @@ const RandomRecipeTable = () => {
                 data-cy={`change-random-recipe-${index}`}
               />
             </IconButton>
-            <IconButton onClick={() => deleteRecipe(index)}>
-              <DeleteIcon
-                color="secondary"
-                data-cy={`delete-random-recipe-${index}`}
-              />
-            </IconButton>
+            <RandomRecipeDelete
+              onRecipeDelete={() => deleteRecipe(index)}
+              index={index}
+            />
           </TableRow>
         ))}
       </TableBody>
