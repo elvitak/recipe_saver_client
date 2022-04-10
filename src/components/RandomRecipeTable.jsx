@@ -9,6 +9,7 @@ import {
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import Recipes from "../modules/recipes";
 import weekdays from "../modules/weekdays";
+import RandomRecipeDelete from "./RandomRecipeDelete";
 
 const RandomRecipeTable = () => {
   const [recipes, setRecipes] = useState([]);
@@ -27,6 +28,11 @@ const RandomRecipeTable = () => {
     setRecipes([...recipes]);
   };
 
+  const deleteRecipe = async (index) => {
+    recipes[index] = "";
+    setRecipes([...recipes]);
+  };
+
   return (
     <Table>
       <TableBody>
@@ -42,6 +48,10 @@ const RandomRecipeTable = () => {
                 data-cy={`change-random-recipe-${index}`}
               />
             </IconButton>
+            <RandomRecipeDelete
+              onRecipeDelete={() => deleteRecipe(index)}
+              index={index}
+            />
           </TableRow>
         ))}
       </TableBody>
