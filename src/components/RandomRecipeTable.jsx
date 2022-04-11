@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  Table,
-  TableCell,
-  TableRow,
-  TableBody,
-  IconButton
-} from "@mui/material";
-import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
+import { Table, TableCell, TableRow, TableBody } from "@mui/material";
 import Recipes from "../modules/recipes";
 import weekdays from "../modules/weekdays";
 import RandomRecipeDelete from "./RandomRecipeDelete";
+import RandomRecipeReplace from "./RandomRecipeReplace";
 
 const RandomRecipeTable = () => {
   const [recipes, setRecipes] = useState([]);
@@ -42,12 +36,10 @@ const RandomRecipeTable = () => {
             <TableCell data-cy={`random-recipes-${index}`}>
               {recipe.title}
             </TableCell>
-            <IconButton onClick={() => replaceRecipe(index)}>
-              <ChangeCircleIcon
-                color="secondary"
-                data-cy={`change-random-recipe-${index}`}
-              />
-            </IconButton>
+            <RandomRecipeReplace
+              onRecipeReplace={() => replaceRecipe(index)}
+              index={index}
+            />
             <RandomRecipeDelete
               onRecipeDelete={() => deleteRecipe(index)}
               index={index}
