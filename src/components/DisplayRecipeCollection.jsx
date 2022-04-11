@@ -14,8 +14,8 @@ const DisplayRecipeCollection = () => {
 
   const fetchRecipes = async () => {
     const data = await Recipes.index();
-    if (data.message) {
-      setMessage(data.message);
+    if (data.recipes.length === 0) {
+      setMessage("You haven't saved any recipe yet");
     } else {
       setRecipes(data.recipes);
     }
