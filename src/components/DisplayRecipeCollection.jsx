@@ -11,6 +11,7 @@ const DisplayRecipeCollection = () => {
   const classes = useStyles();
   const { state } = useLocation();
   const [message, setMessage] = useState();
+  const [stateMessage, setStateMessage] = useState(state?.message);
 
   const fetchRecipes = async () => {
     const data = await Recipes.index();
@@ -25,6 +26,10 @@ const DisplayRecipeCollection = () => {
     fetchRecipes();
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => setStateMessage(""), 3000);
+  }, [state]);
+
   const recipeCollection = recipes.map((recipe) => {
     return (
       <Grid item key={recipe.id} xs={12} sm={6} md={4}>
@@ -36,7 +41,7 @@ const DisplayRecipeCollection = () => {
   return (
     <>
       <Headline viewHeadline={"Saved recipes"} />
-      <div data-cy="flash-message">{state?.message}</div>
+      <div data-cy="flash-message">{stateMessage}</div>
       {message ? (
         <div data-cy="informational-message">{message}</div>
       ) : (
