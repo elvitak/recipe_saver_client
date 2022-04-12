@@ -69,5 +69,9 @@ describe("Visiting the application, user", () => {
         "You successfully deleted recipe"
       );
     });
+
+    it("is expected not to see a confirmation message after 3 sek", () => {
+      cy.wait(3000).should("not.exist");
+    });
   });
 });
