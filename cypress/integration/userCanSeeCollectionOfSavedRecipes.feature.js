@@ -1,13 +1,34 @@
 /* eslint-disable no-undef */
 describe("Visiting the application, user", () => {
+  describe("while recipes are loading", () => {
+    before(() => {
+      cy.intercept("GET", "/api/recipes", async (req) => {
+        req.reply({
+          fixture: "index_response.json",
+          delay: 500
+        });
+      }).as("getRecipes");
+      cy.visit("/");
+    });
+
+    it("is expected to see loading image", () => {
+      cy.get("[data-cy=loading-circle]").should("exist");
+      cy.wait("@getRecipes");
+    });
+
+    it("is expected to not see loading image once there is recipes to display", () => {
+      cy.get("[data-cy=loading-circle]").should("not.exist");
+    });
+  });
+
   describe("who has created recipes", () => {
     before(() => {
       cy.intercept("GET", "/api/recipes", {
-        fixture: "index_response.json",
+        fixture: "index_response.json"
       }).as("getRecipes");
       cy.visit("/");
-      cy.get("#recipeCollectionTab").click();
     });
+
     it("is expected to make a network call with status 200", () => {
       cy.wait("@getRecipes").its("response.statusCode").should("eq", 200);
     });
@@ -49,7 +70,7 @@ describe("Visiting the application, user", () => {
   describe("who hasn't created recipes", () => {
     before(() => {
       cy.intercept("GET", "/api/recipes", {
-        fixture: "index_with_norecipes.json",
+        fixture: "index_with_norecipes.json"
       });
       cy.visit("/");
       cy.get("#recipeCollectionTab").click();
