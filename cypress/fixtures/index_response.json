@@ -3,18 +3,21 @@
     {
       "id": 1,
       "title": "nom nom",
+      "image": "https://images.unsplash.com/photo-1568036824776-66ae08fb4ce3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGljYXxlbnwwfDF8MHx8&auto=format&fit=crop&w=800&q=60",
       "created_at": "2022-01-05T15:24:09.193Z",
       "updated_at": "2022-01-05T15:24:09.193Z"
     },
     {
       "id": 2,
       "title": "Good Old Fashioned Pancakes",
+      "image": "https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
       "created_at": "2022-01-05T15:31:01.788Z",
       "updated_at": "2022-01-05T15:31:01.788Z"
     },
     {
       "id": 3,
-      "title": "Cielaviņa",
+      "title": "cake cielavina",
+      "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
       "created_at": "2022-01-05T15:38:52.734Z",
       "updated_at": "2022-01-05T15:38:52.734Z"
     }

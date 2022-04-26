@@ -46,23 +46,12 @@ describe("Visiting the application, user", () => {
         });
     });
 
-    it("is expected to see a button to view the recipe", () => {
+    it("is expected to see an image", () => {
       cy.get("[data-cy=recipe-collection]")
         .children()
         .first()
         .within(() => {
-          cy.get("[data-cy=view-btn]").should("be.visible");
-        });
-    });
-
-    it("is expected to have access to the right url", () => {
-      cy.get("[data-cy=recipe-collection]")
-        .children()
-        .first()
-        .within(() => {
-          cy.get("[data-cy=view-btn][href=\\/recipes\\/1]").should(
-            "be.visible"
-          );
+          cy.get("[data-cy=recipe-image]").should("exist");
         });
     });
   });
