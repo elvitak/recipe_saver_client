@@ -12,7 +12,7 @@ describe("User, when clicking on recipe", () => {
       .children()
       .first()
       .within(() => {
-        cy.get("[data-cy=view-btn]").click();
+        cy.get("[data-cy=recipe-card]").click();
       });
   });
 
