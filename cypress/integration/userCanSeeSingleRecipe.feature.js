@@ -71,7 +71,8 @@ describe("Visiting the application, user", () => {
     });
 
     it("is expected not to see a confirmation message after 3 sek", () => {
-      cy.wait(3000).should("not.exist");
+      cy.wait(3000);
+      cy.get("[data-cy=flash-message]").should("not.exist");
     });
   });
 });
