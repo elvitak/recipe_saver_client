@@ -3,13 +3,21 @@ import { TextField } from "@mui/material";
 
 const InstructionsField = ({ instructions, onInstructionsChange }) => {
   const handleOnChange = (e) => {
-    const instructions = e.target.value
+    const newInstructions = e.target.value
       .split("\n\n")
       .map((line) => ({ instruction: line }));
-    onInstructionsChange(instructions);
+
+    const oldInstructions = instructions
+      .filter((instruction) => instruction.id !== undefined)
+      .map((instruction) => {
+        return { id: instruction.id, _destroy: true };
+      });
+
+    onInstructionsChange([...newInstructions, ...oldInstructions]);
   };
 
   const lines = instructions
+    .filter((instruction) => instruction.instruction !== undefined)
     .map((instruction) => instruction.instruction)
     .join("\n\n");
 
