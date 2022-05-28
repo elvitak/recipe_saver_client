@@ -5,7 +5,9 @@ const IngridientsInputFields = ({ ingredients, onIngredientsChange }) => {
   const handleIngredientChange = (index, ingredient) => {
     const changedIngredients = [...ingredients];
 
-    if (index === ingredients.length) {
+    if (ingredient._destroy) {
+      changedIngredients.splice(index, 1);
+    } else if (index === ingredients.length) {
       changedIngredients.push(ingredient);
     } else {
       changedIngredients[index] = ingredient;

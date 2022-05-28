@@ -1,7 +1,11 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { TextField, IconButton } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
+  const onIngredientDelete = () => {
+    onIngredientChange({ ...ingredient, _destroy: true });
+  };
   return (
     <div data-cy="form-ingredient-input-line" widths="equal">
       <TextField
@@ -13,7 +17,6 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
           onIngredientChange({ ...ingredient, ...{ amount: e.target.value } })
         }
       />
-
       <TextField
         data-cy={"form-ingredient-unit-" + id}
         label={id === 0 ? "Unit" : undefined}
@@ -23,7 +26,6 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
           onIngredientChange({ ...ingredient, ...{ unit: e.target.value } })
         }
       />
-
       <TextField
         data-cy={"form-ingredient-name-" + id}
         label={id === 0 ? "Ingredient" : undefined}
@@ -33,6 +35,9 @@ const IngredientInput = ({ ingredient, onIngredientChange, id }) => {
           onIngredientChange({ ...ingredient, ...{ name: e.target.value } })
         }
       />
+      <IconButton onClick={() => onIngredientDelete()}>
+        <ClearIcon color="secondary" data-cy={`ingredient-delete-${id}`} />
+      </IconButton>
     </div>
   );
 };
