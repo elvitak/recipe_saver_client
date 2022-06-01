@@ -33,7 +33,7 @@ describe("Visiting the application, a user", () => {
     });
 
     it("is expected to delete an ingredient row", () => {
-      cy.get("[data-cy=form-ingredient-name-1]").should("not.contain", "flour");
+      cy.get("[data-cy=form-ingredient-name-1]").should("not.exist");
     });
   });
 
