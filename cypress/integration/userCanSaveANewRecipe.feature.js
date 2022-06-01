@@ -27,6 +27,16 @@ describe("Visiting the application, a user", () => {
     cy.get("[data-cy=form-ingredient-input-line]").should("have.length", 3);
   });
 
+  describe("by clicking a delete ingredient button", () => {
+    before(() => {
+      cy.get("[data-cy=ingredient-delete-1]").click();
+    });
+
+    it("is expected to delete an ingredient row", () => {
+      cy.get("[data-cy=form-ingredient-name-1]").should("not.exist");
+    });
+  });
+
   describe("can press create button and see success message", () => {
     before(() => {
       cy.intercept("POST", "/api/recipes", {
