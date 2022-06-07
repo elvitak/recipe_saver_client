@@ -61,7 +61,7 @@ describe("Visiting the application, a user", () => {
     });
 
     it("is expected not to see image filename anymore", () => {
-      cy.get("[data-cy=filename]").should("not.exist");
+      cy.get("[data-cy=filename]").should("be.empty");
     });
   });
 });
