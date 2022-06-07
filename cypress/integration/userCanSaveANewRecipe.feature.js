@@ -59,5 +59,9 @@ describe("Visiting the application, a user", () => {
         "Recipe was created successfully"
       );
     });
+
+    it("is expected not to see image filename anymore", () => {
+      cy.get("[data-cy=filename]").should("be.empty");
+    });
   });
 });

@@ -7,6 +7,7 @@ import { Container, Button } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import Headline from "./Headline";
 import ImageInputField from "./ImageInputField";
+import utilities from "../modules/utilities";
 
 const FormToSaveRecipe = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const FormToSaveRecipe = () => {
   };
   const [recipe, setRecipe] = useState(initialState);
   const [message, setMessage] = useState();
+  const [fileName, setFileName] = useState("");
   const { id } = useParams();
 
   useEffect(() => {
@@ -39,6 +41,7 @@ const FormToSaveRecipe = () => {
     } else {
       const response = await Recipes.create(recipe);
       setRecipe(initialState);
+      setFileName("");
       setMessage(response.data.message);
     }
   };
@@ -47,6 +50,14 @@ const FormToSaveRecipe = () => {
     setRecipe((previousRecipe) => {
       return { ...previousRecipe, [propName]: value };
     });
+  };
+
+  const handleImage = async (event) => {
+    event.preventDefault();
+    const file = event.target.files[0];
+    file.name && setFileName(file.name);
+    const encodedFile = await utilities.imageEncoder(file);
+    handleChange("image", encodedFile);
   };
 
   return (
@@ -66,7 +77,7 @@ const FormToSaveRecipe = () => {
           instructions={recipe.instructions}
           onInstructionsChange={(value) => handleChange("instructions", value)}
         />
-        <ImageInputField setImage={(value) => handleChange("image", value)} />
+        <ImageInputField fileName={fileName} onImageChange={handleImage} />
         <Button data-cy="save-btn" variant="contained" onClick={saveRecipe}>
           Save
         </Button>
