@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Recipes from "../modules/recipes";
 import CircularProgress from "@mui/material/CircularProgress";
 import IngredientDisplay from "./IngredientDisplay";
-import DisplayInstruction from "./DisplayInstruction";
+import InstructionDisplay from "./InstructionDisplay";
 import Headline from "./Headline";
 import SingleRecipeDelete from "./SingleRecipeDelete";
 import SingleRecipeEdit from "./SingleRecipeEdit";
@@ -24,7 +24,7 @@ const DisplaySingleRecipe = () => {
     return <CircularProgress />;
   } else {
     const instructions = recipe.instructions.map((instruction) => {
-      return <DisplayInstruction instruction={instruction} />;
+      return <InstructionDisplay instruction={instruction} />;
     });
 
     return (
