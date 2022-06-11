@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Recipes from "../modules/recipes";
 import CircularProgress from "@mui/material/CircularProgress";
-import DisplayIngredient from "./DisplayIngredient";
+import IngredientDisplay from "./IngredientDisplay";
 import DisplayInstruction from "./DisplayInstruction";
 import Headline from "./Headline";
 import SingleRecipeDelete from "./SingleRecipeDelete";
@@ -32,7 +32,7 @@ const DisplaySingleRecipe = () => {
         <Headline viewHeadline={recipe.title} />
         <SingleRecipeDelete />
         <SingleRecipeEdit />
-        <DisplayIngredient ingredients={recipe.ingredients} />
+        <IngredientDisplay ingredients={recipe.ingredients} />
         <ol>{instructions}</ol>
       </>
     );
