@@ -6,7 +6,7 @@ import RecipeCard from "./RecipeCard";
 import { useLocation } from "react-router-dom";
 import Headline from "./Headline";
 
-const DisplayRecipeCollection = () => {
+const RecipeCollectionDisplay = () => {
   const [recipes, setRecipes] = useState();
   const classes = useStyles();
   const { state } = useLocation();
@@ -65,4 +65,4 @@ const DisplayRecipeCollection = () => {
   );
 };
 
-export default DisplayRecipeCollection;
+export default RecipeCollectionDisplay;

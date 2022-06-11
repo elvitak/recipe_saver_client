@@ -2,7 +2,7 @@ import React from "react";
 import HeaderComponent from "./components/HeaderComponent";
 import { Routes, Route } from "react-router";
 import CreateAndUpdateRecipe from "./components/CreateAndUpdateRecipe";
-import DisplayRecipeCollection from "./components/DisplayRecipeCollection";
+import RecipeCollectionDisplay from "./components/RecipeCollectionDisplay";
 import DisplaySingleRecipe from "./components/DisplaySingleRecipe";
 import RandomRecipes from "./components/RandomRecipes";
 
@@ -12,7 +12,7 @@ const App = () => {
       <HeaderComponent />
       <Routes>
         <Route path="add-recipe" element={<CreateAndUpdateRecipe />} />
-        <Route path="/" element={<DisplayRecipeCollection />} />
+        <Route path="/" element={<RecipeCollectionDisplay />} />
         <Route path="recipes/:id" element={<DisplaySingleRecipe />} />
         <Route path="recipes/:id/edit" element={<CreateAndUpdateRecipe />} />
         <Route path="recipes/random-generated" element={<RandomRecipes />} />
