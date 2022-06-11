@@ -8,7 +8,7 @@ import Headline from "./Headline";
 import SingleRecipeDelete from "./SingleRecipeDelete";
 import SingleRecipeEdit from "./SingleRecipeEdit";
 
-const DisplaySingleRecipe = () => {
+const SingleRecipeDisplay = () => {
   const [recipe, setRecipe] = useState();
   const { id } = useParams();
 
@@ -39,4 +39,4 @@ const DisplaySingleRecipe = () => {
   }
 };
 
-export default DisplaySingleRecipe;
+export default SingleRecipeDisplay;

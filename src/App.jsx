@@ -3,7 +3,7 @@ import HeaderComponent from "./components/HeaderComponent";
 import { Routes, Route } from "react-router";
 import CreateAndUpdateRecipe from "./components/CreateAndUpdateRecipe";
 import RecipeCollectionDisplay from "./components/RecipeCollectionDisplay";
-import DisplaySingleRecipe from "./components/DisplaySingleRecipe";
+import SingleRecipeDisplay from "./components/SingleRecipeDisplay";
 import RandomRecipes from "./components/RandomRecipes";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
       <Routes>
         <Route path="add-recipe" element={<CreateAndUpdateRecipe />} />
         <Route path="/" element={<RecipeCollectionDisplay />} />
-        <Route path="recipes/:id" element={<DisplaySingleRecipe />} />
+        <Route path="recipes/:id" element={<SingleRecipeDisplay />} />
         <Route path="recipes/:id/edit" element={<CreateAndUpdateRecipe />} />
         <Route path="recipes/random-generated" element={<RandomRecipes />} />
       </Routes>
