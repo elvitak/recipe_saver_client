@@ -6,10 +6,10 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Paper,
+  Paper
 } from "@mui/material";
 
-const DisplayIngredient = ({ ingredients }) => {
+const IngredientDisplay = ({ ingredients }) => {
   return (
     <TableContainer component={Paper} style={{ width: 400 }}>
       <Table
@@ -41,4 +41,4 @@ const DisplayIngredient = ({ ingredients }) => {
   );
 };
 
-export default DisplayIngredient;
+export default IngredientDisplay;

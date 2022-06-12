@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Recipes from "../modules/recipes";
 import CircularProgress from "@mui/material/CircularProgress";
-import DisplayIngredient from "./DisplayIngredient";
-import DisplayInstruction from "./DisplayInstruction";
+import IngredientDisplay from "./IngredientDisplay";
+import InstructionDisplay from "./InstructionDisplay";
 import Headline from "./Headline";
 import SingleRecipeDelete from "./SingleRecipeDelete";
 import SingleRecipeEdit from "./SingleRecipeEdit";
 
-const DisplaySingleRecipe = () => {
+const SingleRecipeDisplay = () => {
   const [recipe, setRecipe] = useState();
   const { id } = useParams();
 
@@ -24,7 +24,7 @@ const DisplaySingleRecipe = () => {
     return <CircularProgress />;
   } else {
     const instructions = recipe.instructions.map((instruction) => {
-      return <DisplayInstruction instruction={instruction} />;
+      return <InstructionDisplay instruction={instruction} />;
     });
 
     return (
@@ -32,11 +32,11 @@ const DisplaySingleRecipe = () => {
         <Headline viewHeadline={recipe.title} />
         <SingleRecipeDelete />
         <SingleRecipeEdit />
-        <DisplayIngredient ingredients={recipe.ingredients} />
+        <IngredientDisplay ingredients={recipe.ingredients} />
         <ol>{instructions}</ol>
       </>
     );
   }
 };
 
-export default DisplaySingleRecipe;
+export default SingleRecipeDisplay;

@@ -9,7 +9,7 @@ import Headline from "./Headline";
 import ImageInputField from "./ImageInputField";
 import utilities from "../modules/utilities";
 
-const FormToSaveRecipe = () => {
+const CreateAndUpdateRecipe = () => {
   const navigate = useNavigate();
   const initialState = {
     title: "",
@@ -86,4 +86,4 @@ const FormToSaveRecipe = () => {
   );
 };
 
-export default FormToSaveRecipe;
+export default CreateAndUpdateRecipe;
